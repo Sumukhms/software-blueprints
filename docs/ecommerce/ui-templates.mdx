@@ -1,0 +1,172 @@
+---
+sidebar_position: 3
+title: "UI Templates (Live)"
+---
+
+# Live UI Templates
+
+When designing software blueprints, you can embed fully interactive UI templates right inside the documentation. Below are some examples showing both the React component and the CSS styling executing live.
+
+Try editing the CSS inside the `style` tags or the inline styles below to see the preview update instantly!
+
+## 1. Premium Pricing Card
+
+```jsx live
+function PricingCard() {
+  return (
+    <div style={{ fontFamily: 'system-ui, sans-serif', padding: '20px' }}>
+      <style>
+        {`
+          .pricing-card {
+            background: linear-gradient(145deg, #1e1e2f, #2a2a40);
+            border-radius: 16px;
+            padding: 30px;
+            color: white;
+            max-width: 300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+          }
+          .pricing-card:hover {
+            transform: translateY(-5px);
+          }
+          .price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #00d2ff;
+          }
+          .features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+          }
+          .features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+          }
+          .features li::before {
+            content: "✓";
+            color: #00d2ff;
+            margin-right: 10px;
+            font-weight: bold;
+          }
+          .btn {
+            background: #00d2ff;
+            color: #1e1e2f;
+            border: none;
+            padding: 12px 20px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+          }
+          .btn:hover {
+            background: #3adaff;
+          }
+        `}
+      </style>
+
+      <div className="pricing-card">
+        <h3>Pro Plan</h3>
+        <div className="price">$29<span style={{ fontSize: '1rem', color: '#aaa' }}>/mo</span></div>
+        <p style={{ color: '#ccc' }}>Perfect for growing teams and startups.</p>
+        
+        <ul className="features">
+          <li>Unlimited Projects</li>
+          <li>Team Collaboration</li>
+          <li>Advanced Analytics</li>
+          <li>24/7 Priority Support</li>
+        </ul>
+
+        <button className="btn">Get Started</button>
+      </div>
+    </div>
+  );
+}
+```
+
+## 2. Modern Login Form
+
+```jsx live
+function LoginForm() {
+  return (
+    <div style={{ fontFamily: 'system-ui, sans-serif', padding: '20px' }}>
+      <style>
+        {`
+          .login-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            max-width: 350px;
+            color: #333;
+          }
+          .input-group {
+            margin-bottom: 15px;
+          }
+          .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #555;
+          }
+          .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+          }
+          .input-group input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+          }
+          .submit-btn {
+            background: #6366f1;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+          }
+          .submit-btn:hover {
+            background: #4f46e5;
+          }
+        `}
+      </style>
+
+      <div className="login-container">
+        <h2 style={{ marginTop: 0, color: '#111' }}>Welcome Back</h2>
+        <p style={{ color: '#666', marginBottom: '20px' }}>Please sign in to your account.</p>
+
+        <form onSubmit={(e) => { e.preventDefault(); alert('Signed in!'); }}>
+          <div className="input-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="name@company.com" required />
+          </div>
+          
+          <div className="input-group">
+            <label>Password</label>
+            <input type="password" placeholder="••••••••" required />
+          </div>
+
+          <button type="submit" className="submit-btn">Sign In</button>
+        </form>
+      </div>
+    </div>
+  );
+}
+```

@@ -1,0 +1,50 @@
+---
+sidebar_position: 2
+title: "Interactive Components"
+---
+
+# Interactive UI Components
+
+When designing system architectures, we often need to prototype the UI components that interact with the backend services.
+
+Below is an interactive live code block. You can edit the code directly on the webpage, and the preview below will update instantly!
+
+```jsx live
+function Counter() {
+  const [count, setCount] = React.useState(0);
+  
+  return (
+    <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
+      <h3>Live Shopping Cart Prototype</h3>
+      <p>Items in cart: {count}</p>
+      <button 
+        onClick={() => setCount(count + 1)}
+        style={{
+          padding: '10px 15px',
+          backgroundColor: '#0070f3',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer'
+        }}
+      >
+        Add to Cart
+      </button>
+      <button 
+        onClick={() => setCount(0)}
+        style={{
+          padding: '10px 15px',
+          marginLeft: '10px',
+          backgroundColor: '#ff4040',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer'
+        }}
+      >
+        Clear Cart
+      </button>
+    </div>
+  );
+}
+```
