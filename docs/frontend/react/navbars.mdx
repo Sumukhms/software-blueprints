@@ -18,7 +18,58 @@ import TabItem from '@theme/TabItem';
       <nav className="n-std"><div className="n-std-l">Brand.</div><div className="n-std-m"><a href="#">Home</a><a href="#">Products</a><a href="#">About</a></div><button className="n-std-b">Sign In</button></nav>
     </div>
   </TabItem>
-  <TabItem value="code" label="Code">```jsx\n// Standard Navbar\n```</TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+export default function StandardNavbar() {
+  return (
+    <nav className="navbar-standard">
+      <div className="navbar-logo">Brand.</div>
+      <div className="navbar-links">
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">About</a>
+      </div>
+      <button className="navbar-btn">Sign In</button>
+    </nav>
+  );
+}
+```
+
+```css
+.navbar-standard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+.navbar-logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+.navbar-links a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+}
+.navbar-btn {
+  background: #111;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+```
+
+  </TabItem>
 </Tabs>
 
 ## 2. Glassmorphism Navbar
@@ -29,7 +80,55 @@ import TabItem from '@theme/TabItem';
       <nav className="n-gls"><div style={{fontWeight:'bold', letterSpacing:'1px'}}>VISION.</div><div className="n-gls-m"><a href="#">Showcase</a><a href="#">Studio</a></div><button style={{background:'rgba(255,255,255,0.2)', color:'white', border:'1px solid rgba(255,255,255,0.3)', padding:'8px 20px', borderRadius:'20px'}}>Enter</button></nav>
     </div>
   </TabItem>
-  <TabItem value="code" label="Code">```jsx\n// Glass Navbar\n```</TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+export default function GlassNavbar() {
+  return (
+    <nav className="navbar-glass">
+      <div className="glass-logo">VISION.</div>
+      <div className="glass-links">
+        <a href="#">Showcase</a>
+        <a href="#">Studio</a>
+      </div>
+      <button className="glass-btn">Enter</button>
+    </nav>
+  );
+}
+```
+
+```css
+.navbar-glass {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+}
+.glass-logo {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.glass-links a {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 10px;
+  text-decoration: none;
+}
+.glass-btn {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+```
+
+  </TabItem>
 </Tabs>
 
 ## 3. Centered Logo Navbar
@@ -44,7 +143,57 @@ import TabItem from '@theme/TabItem';
       </nav>
     </div>
   </TabItem>
-  <TabItem value="code" label="Code">```jsx\n// Centered Logo Navbar\n```</TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+export default function CenteredNavbar() {
+  return (
+    <nav className="navbar-centered">
+      <div className="nav-left">
+        <a href="#">Shop</a>
+        <a href="#">Collections</a>
+      </div>
+      <div className="nav-logo">LUXE.</div>
+      <div className="nav-right">
+        <a href="#">Search</a>
+        <a href="#">Cart (0)</a>
+      </div>
+    </nav>
+  );
+}
+```
+
+```css
+.navbar-centered {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 15px 30px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+.nav-logo {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: #4f46e5;
+  text-align: center;
+}
+.nav-left, .nav-right {
+  display: flex;
+  gap: 20px;
+}
+.nav-right {
+  justify-content: flex-end;
+}
+.navbar-centered a {
+  color: #666;
+  text-decoration: none;
+  font-weight: 500;
+}
+```
+
+  </TabItem>
 </Tabs>
 
 ## 4. Minimalist Search Navbar
@@ -59,7 +208,52 @@ import TabItem from '@theme/TabItem';
       </nav>
     </div>
   </TabItem>
-  <TabItem value="code" label="Code">```jsx\n// Minimalist Navbar\n```</TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+export default function SearchNavbar() {
+  return (
+    <nav className="navbar-minimal">
+      <strong className="nav-brand">The Daily.</strong>
+      <input type="text" className="nav-search" placeholder="Search articles..." />
+      <div className="nav-actions">
+        <span className="nav-login">Login</span>
+      </div>
+    </nav>
+  );
+}
+```
+
+```css
+.navbar-minimal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: white;
+  border-bottom: 2px solid #000;
+}
+.nav-brand {
+  font-size: 1.2rem;
+}
+.nav-search {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 300px;
+  background: #f9f9f9;
+}
+.nav-actions {
+  display: flex;
+  gap: 15px;
+}
+.nav-login {
+  font-weight: bold;
+  cursor: pointer;
+}
+```
+
+  </TabItem>
 </Tabs>
 
 ## 5. Two-Tier Enterprise Navbar
@@ -77,5 +271,72 @@ import TabItem from '@theme/TabItem';
       </nav>
     </div>
   </TabItem>
-  <TabItem value="code" label="Code">```jsx\n// Two Tier Navbar\n```</TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+export default function TwoTierNavbar() {
+  return (
+    <nav className="navbar-tier">
+      <div className="tier-top">
+        <span>Support</span>
+        <span>Sales: 1-800-555-0198</span>
+      </div>
+      <div className="tier-bottom">
+        <strong className="tier-brand">CloudFlow</strong>
+        <div className="tier-links">
+          <span>Products</span>
+          <span>Solutions</span>
+          <span>Pricing</span>
+        </div>
+        <button className="tier-btn">Console</button>
+      </div>
+    </nav>
+  );
+}
+```
+
+```css
+.navbar-tier {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.tier-top {
+  background: #111;
+  color: #ccc;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  font-size: 0.8rem;
+}
+.tier-bottom {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tier-brand {
+  color: #4f46e5;
+  font-size: 1.3rem;
+}
+.tier-links {
+  display: flex;
+  gap: 20px;
+  font-weight: 500;
+  color: #666;
+}
+.tier-links span { cursor: pointer; }
+.tier-btn {
+  background: #4f46e5;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+```
+
+  </TabItem>
 </Tabs>
