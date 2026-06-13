@@ -1,41 +1,24 @@
-# Website
+# Software Blueprints
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+An open-source repository of system architectures, UI templates, and software blueprints.
 
-## Installation
+## 🚀 Welcome
 
-```bash
-yarn
-```
+This repository serves as a "Docs as Code" platform where developers can browse high-level system designs (e.g., MERN, Django, AI SaaS) and interactive React UI components.
 
-## Local Development
+## 🤝 How to Contribute
 
-```bash
-yarn start
-```
+If you are a team member or open-source contributor looking to add a new blueprint, **please read our [Contributing Guide](./CONTRIBUTING.md)**. 
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+The guide explains:
+- What tech stack we use (Docusaurus).
+- How to run the site locally.
+- How to write an Architecture Blueprint (Markdown + Mermaid.js).
+- How to create Interactive UI Components (Tabs + MDX).
 
-## Build
-
-```bash
-yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-## Deployment
-
-Using SSH:
+## 💻 Running Locally
 
 ```bash
-USE_SSH=true yarn deploy
+npm install
+npm start
 ```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
