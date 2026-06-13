@@ -122,3 +122,36 @@ git push origin main
 ```
 
 The live website will automatically update once the code reaches the `main` branch on GitHub!
+
+---
+
+## 5. Enterprise UI Standards (For Collaborators)
+
+If you are a developer contributing new UI components to this repository, your code **MUST** adhere to our strict enterprise standards before it will be accepted. Please use this checklist when writing your React/CSS code:
+
+### 1. Semantic HTML
+Do not use `<div>` soup. Use proper HTML5 semantic tags wherever possible:
+- Wrap cards and widgets in `<article>` or `<section>`.
+- Wrap navigation links in `<nav>`.
+- Use `<figure>` and `<figcaption>` for testimonials or images.
+- Wrap forms securely in `<form>` tags.
+
+### 2. Strict Accessibility (A11y)
+Our components must be usable by screen readers.
+- **Forms**: Every `<input>` must have a corresponding `<label>`. They must be linked using `htmlFor="some-id"` and `id="some-id"`. If a visual label breaks the design, hide it using a visually-hidden `.sr-only` CSS class.
+- **Buttons/Icons**: Any button that only contains an icon (e.g., `X`, `⚙`) MUST have an `aria-label="Action description"` attribute.
+- **Interactive States**: Use `aria-hidden="true"` on decorative elements (like background svgs or stars) so screen readers ignore them.
+
+### 3. Keyboard Navigation
+Users must be able to navigate our UI using the `Tab` key seamlessly.
+- **Action Required**: Every interactive element (`<button>`, `<a>`, `<input>`) must have an explicit `:focus-visible` CSS rule.
+- Example: `.my-btn:focus-visible { box-shadow: 0 0 0 3px #4f46e5; outline: none; }`
+- Do not just use `:focus`, as it triggers on mouse clicks. Always use `:focus-visible`.
+
+### 4. Flawless Mobile Responsiveness
+Every component must look mathematically perfect on a 320px mobile screen.
+- Use CSS Flexbox with `flex-wrap: wrap` or CSS Grid with `grid-template-columns: repeat(auto-fit, minmax(...))` for natural reflowing.
+- Add explicit `@media (max-width: 600px)` breakpoint queries to handle complex layouts (like Navbars or Split-Screen Heroes).
+- Use `clamp()` for typography scaling.
+
+**If your contributed code does not meet these 4 criteria, it will be rejected during Code Review.**
