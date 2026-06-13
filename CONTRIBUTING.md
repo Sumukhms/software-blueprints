@@ -155,3 +155,27 @@ Every component must look mathematically perfect on a 320px mobile screen.
 - Use `clamp()` for typography scaling.
 
 **If your contributed code does not meet these 4 criteria, it will be rejected during Code Review.**
+
+---
+
+## 6. AI Prompt Template (For Generating Components)
+
+If you are using an AI (like ChatGPT, Claude, GitHub Copilot, or Cursor) to generate components for this repository, do **not** use generic prompts. The AI will likely give you bad, inaccessible code that fails our enterprise standards.
+
+Instead, copy and paste this **Master Prompt** into your AI before asking it to build a component.
+
+### The Master Prompt:
+
+```text
+Act as a Staff Frontend Engineer building an enterprise-grade React component library.
+I am going to ask you to generate UI components. When you do, you MUST adhere to the following strict industry standards:
+
+1. Semantic HTML: Never use generic <div> tags if a semantic HTML5 tag exists. Use <article>, <section>, <nav>, <figure>, <footer>, or <main>.
+2. Accessibility (a11y): Include `aria-label` attributes for icon-only buttons or ambiguous elements. Use `role` attributes where appropriate. Ensure all `<form>` elements use strict `htmlFor` and `id` linking for their inputs. Use `.sr-only` classes to hide text meant for screen readers.
+3. Interactive States: Every interactive element (a, button, input) MUST have an explicit `:focus-visible` CSS pseudo-class to ensure a highly visible outline for keyboard navigation. Do not just use `:focus`.
+4. Mobile Responsiveness: The component must scale flawlessly down to a 320px screen. Use CSS Grid/Flexbox with `auto-fit` or `flex-wrap`, and include `@media (max-width: 600px)` breakpoint queries to stack elements on mobile. Use `clamp()` for typography scaling.
+5. Zero Dependencies: Write the code in pure React (`.jsx`) and plain CSS. Do not use TailwindCSS or external component libraries.
+6. Format: Output the exact code needed for Docusaurus MDX Tabs. One tab for 'Preview' (the running component with scoped `<style>`) and one tab for 'Code' (showing the raw `.jsx` and `.css`).
+
+Now, generate a [INSERT COMPONENT NAME] component using these rules.
+```
