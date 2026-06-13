@@ -1,0 +1,124 @@
+---
+sidebar_position: 4
+title: "Footers"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Footer Components
+
+Standard footer layouts for the bottom of applications and marketing pages.
+
+## Multi-Column Footer
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <style>
+        {`
+          .footer {
+            background: #111;
+            color: #ccc;
+            padding: 40px 20px;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+          }
+          .footer-brand h2 {
+            color: white;
+            margin: 0 0 10px;
+          }
+          .footer-column h4 {
+            color: white;
+            margin: 0 0 15px;
+          }
+          .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+          }
+          .footer-links li {
+            margin-bottom: 8px;
+          }
+          .footer-links a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.2s;
+          }
+          .footer-links a:hover {
+            color: white;
+          }
+        `}
+      </style>
+      <footer className="footer">
+        <div className="footer-brand">
+          <h2>Brand.</h2>
+          <p>Building the future, one generic component at a time.</p>
+        </div>
+        <div className="footer-column">
+          <h4>Product</h4>
+          <ul className="footer-links">
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Documentation</a></li>
+          </ul>
+        </div>
+        <div className="footer-column">
+          <h4>Company</h4>
+          <ul className="footer-links">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="footer-brand">
+        <h2>Brand.</h2>
+        <p>Building the future, one generic component at a time.</p>
+      </div>
+      <div className="footer-column">
+        <h4>Product</h4>
+        <ul className="footer-links">
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Documentation</a></li>
+        </ul>
+      </div>
+      <div className="footer-column">
+        <h4>Company</h4>
+        <ul className="footer-links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+    </footer>
+  );
+}
+```
+
+```css
+.footer {
+  background: #111; color: #ccc; padding: 40px 20px; border-radius: 8px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px;
+}
+.footer-brand h2 { color: white; margin: 0 0 10px; }
+.footer-column h4 { color: white; margin: 0 0 15px; }
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 8px; }
+.footer-links a { color: #999; text-decoration: none; }
+.footer-links a:hover { color: white; }
+```
+
+  </TabItem>
+</Tabs>

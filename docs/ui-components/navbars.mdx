@@ -1,0 +1,124 @@
+---
+sidebar_position: 2
+title: "Navbars"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Navbar Components
+
+Generic top navigation bars.
+
+## Standard Navbar
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ padding: '20px', fontFamily: 'system-ui, sans-serif' }}>
+      <style>
+        {`
+          .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            border: 1px solid #eee;
+          }
+          .nav-logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #111;
+          }
+          .nav-links {
+            display: flex;
+            gap: 20px;
+          }
+          .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+          }
+          .nav-links a:hover {
+            color: #4f46e5;
+          }
+          .nav-action {
+            background: #111;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+          }
+        `}
+      </style>
+      <div className="navbar">
+        <div className="nav-logo">Brand.</div>
+        <div className="nav-links">
+          <a href="#">Home</a>
+          <a href="#">Products</a>
+          <a href="#">About</a>
+        </div>
+        <button className="nav-action">Sign In</button>
+      </div>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+function Navbar() {
+  return (
+    <nav className="navbar">
+      <div className="nav-logo">Brand.</div>
+      <div className="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">About</a>
+      </div>
+      <button className="nav-action">Sign In</button>
+    </nav>
+  );
+}
+```
+
+```css
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.nav-logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #111;
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+}
+.nav-links a:hover {
+  color: #4f46e5;
+}
+.nav-action {
+  background: #111;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+```
+
+  </TabItem>
+</Tabs>
