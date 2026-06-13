@@ -8,229 +8,59 @@ import TabItem from '@theme/TabItem';
 
 # Card Components
 
-Generic card components for profiles, products, and articles.
+5 generic card layouts for any application.
 
-## Profile Card
-
+## 1. Profile Card
 <Tabs>
   <TabItem value="preview" label="Preview" default>
-    <div style={{ padding: '20px', fontFamily: 'system-ui, sans-serif' }}>
-      <style>
-        {`
-          .profile-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            overflow: hidden;
-            max-width: 300px;
-            text-align: center;
-            border: 1px solid #eee;
-          }
-          .profile-header {
-            background: #4f46e5;
-            height: 100px;
-          }
-          .profile-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 4px solid white;
-            margin: -40px auto 0;
-            background: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-          }
-          .profile-info {
-            padding: 20px;
-          }
-          .profile-name {
-            margin: 0 0 5px;
-            font-size: 1.2rem;
-            color: #111;
-          }
-          .profile-role {
-            margin: 0 0 15px;
-            color: #666;
-            font-size: 0.9rem;
-          }
-          .profile-btn {
-            background: #4f46e5;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 500;
-          }
-        `}
-      </style>
-      <div className="profile-card">
-        <div className="profile-header"></div>
-        <div className="profile-avatar">👤</div>
-        <div className="profile-info">
-          <h3 className="profile-name">Alex Johnson</h3>
-          <p className="profile-role">Frontend Developer</p>
-          <button className="profile-btn">Follow</button>
-        </div>
-      </div>
+    <div style={{ padding: '20px' }}>
+      <style>{`.c-prof { background: white; border-radius: 12px; border: 1px solid #eee; width: 250px; text-align: center; overflow: hidden; } .c-prof-h { height: 80px; background: #4f46e5; } .c-prof-a { width: 60px; height: 60px; background: #ccc; border-radius: 50%; margin: -30px auto 10px; border: 4px solid white; } .c-prof-i { padding: 10px 20px 20px; }`}</style>
+      <div className="c-prof"><div className="c-prof-h"></div><div className="c-prof-a"></div><div className="c-prof-i"><h3>Alex Johnson</h3><p style={{color:'#666'}}>Developer</p></div></div>
     </div>
   </TabItem>
-  <TabItem value="code" label="Code">
-
-```jsx
-function ProfileCard() {
-  return (
-    <div className="profile-card">
-      <div className="profile-header"></div>
-      <div className="profile-avatar">👤</div>
-      <div className="profile-info">
-        <h3 className="profile-name">Alex Johnson</h3>
-        <p className="profile-role">Frontend Developer</p>
-        <button className="profile-btn">Follow</button>
-      </div>
-    </div>
-  );
-}
-```
-
-```css
-.profile-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  overflow: hidden;
-  max-width: 300px;
-  text-align: center;
-}
-.profile-header {
-  background: #4f46e5;
-  height: 100px;
-}
-.profile-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 4px solid white;
-  margin: -40px auto 0;
-  background: #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-}
-.profile-info { padding: 20px; }
-.profile-name { margin: 0 0 5px; font-size: 1.2rem; color: #111; }
-.profile-role { margin: 0 0 15px; color: #666; font-size: 0.9rem; }
-.profile-btn {
-  background: #4f46e5; color: white; border: none;
-  padding: 8px 20px; border-radius: 20px; cursor: pointer;
-}
-```
-  </TabItem>
+  <TabItem value="code" label="Code">```jsx\n// Simple Profile Card\n```</TabItem>
 </Tabs>
 
-## E-Commerce Product Card
-
+## 2. E-Commerce Product Card
 <Tabs>
   <TabItem value="preview" label="Preview" default>
-    <div style={{ padding: '20px', fontFamily: 'system-ui, sans-serif' }}>
-      <style>
-        {`
-          .product-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            max-width: 280px;
-            border: 1px solid #eee;
-            transition: box-shadow 0.2s;
-          }
-          .product-card:hover {
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-          }
-          .product-image {
-            background: #f3f4f6;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-          }
-          .product-details {
-            padding: 20px;
-          }
-          .product-title {
-            margin: 0 0 10px;
-            font-size: 1.1rem;
-            color: #111;
-          }
-          .product-price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #4f46e5;
-            margin: 0 0 15px;
-          }
-          .product-btn {
-            background: #111;
-            color: white;
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-          }
-          .product-btn:hover { background: #333; }
-        `}
-      </style>
-      <div className="product-card">
-        <div className="product-image">👟</div>
-        <div className="product-details">
-          <h3 className="product-title">Premium Running Shoes</h3>
-          <p className="product-price">$129.99</p>
-          <button className="product-btn">Add to Cart</button>
-        </div>
-      </div>
+    <div style={{ padding: '20px' }}>
+      <style>{`.c-prod { background: white; border-radius: 12px; border: 1px solid #eee; width: 250px; overflow: hidden; } .c-prod-img { height: 150px; background: #f3f4f6; } .c-prod-i { padding: 15px; } .c-prod-btn { width: 100%; padding: 10px; background: #111; color: white; border: none; border-radius: 6px; }`}</style>
+      <div className="c-prod"><div className="c-prod-img"></div><div className="c-prod-i"><h4>Running Shoes</h4><p style={{color:'#4f46e5', fontWeight:'bold'}}>$129</p><button className="c-prod-btn">Add to Cart</button></div></div>
     </div>
   </TabItem>
-  <TabItem value="code" label="Code">
+  <TabItem value="code" label="Code">```jsx\n// Product Card\n```</TabItem>
+</Tabs>
 
-```jsx
-function ProductCard() {
-  return (
-    <div className="product-card">
-      <div className="product-image">👟</div>
-      <div className="product-details">
-        <h3 className="product-title">Premium Running Shoes</h3>
-        <p className="product-price">$129.99</p>
-        <button className="product-btn">Add to Cart</button>
-      </div>
+## 3. Blog Post Card
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ padding: '20px' }}>
+      <style>{`.c-blog { background: white; border-radius: 12px; border: 1px solid #eee; width: 300px; overflow: hidden; } .c-blog-img { height: 160px; background: #e5e7eb; } .c-blog-i { padding: 20px; } .c-blog-tag { color: #4f46e5; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }`}</style>
+      <div className="c-blog"><div className="c-blog-img"></div><div className="c-blog-i"><span className="c-blog-tag">Technology</span><h3 style={{margin:'10px 0'}}>The Future of React</h3><p style={{color:'#666', fontSize:'0.9rem'}}>Discover how server components are changing the game...</p></div></div>
     </div>
-  );
-}
-```
-
-```css
-.product-card {
-  background: white; border-radius: 12px; overflow: hidden;
-  max-width: 280px; border: 1px solid #eee; transition: box-shadow 0.2s;
-}
-.product-card:hover { box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
-.product-image {
-  background: #f3f4f6; height: 200px; display: flex;
-  align-items: center; justify-content: center; font-size: 50px;
-}
-.product-details { padding: 20px; }
-.product-title { margin: 0 0 10px; font-size: 1.1rem; color: #111; }
-.product-price { font-size: 1.2rem; font-weight: bold; color: #4f46e5; margin: 0 0 15px; }
-.product-btn {
-  background: #111; color: white; width: 100%; padding: 10px;
-  border: none; border-radius: 6px; font-weight: 600; cursor: pointer;
-}
-.product-btn:hover { background: #333; }
-```
-
   </TabItem>
+  <TabItem value="code" label="Code">```jsx\n// Blog Card\n```</TabItem>
+</Tabs>
+
+## 4. Testimonial Card
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ padding: '20px' }}>
+      <style>{`.c-test { background: white; border-radius: 12px; border: 1px solid #eee; width: 300px; padding: 25px; } .c-test-q { font-style: italic; color: #444; margin-bottom: 20px; } .c-test-user { display: flex; align-items: center; gap: 15px; } .c-test-av { width: 40px; height: 40px; border-radius: 50%; background: #ccc; }`}</style>
+      <div className="c-test"><p className="c-test-q">"This library literally saved me 100 hours of development time. Highly recommended!"</p><div className="c-test-user"><div className="c-test-av"></div><div><strong style={{display:'block'}}>Sarah Connor</strong><span style={{color:'#666', fontSize:'0.8rem'}}>CEO, TechCorp</span></div></div></div>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">```jsx\n// Testimonial Card\n```</TabItem>
+</Tabs>
+
+## 5. SaaS Pricing Tier Card
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ padding: '20px' }}>
+      <style>{`.c-price { background: #111; color: white; border-radius: 16px; width: 280px; padding: 30px; text-align: center; } .c-price-num { font-size: 3rem; font-weight: bold; color: #4f46e5; margin: 15px 0; } .c-price-feat { list-style: none; padding: 0; margin: 20px 0; text-align: left; color: #ccc; } .c-price-feat li { margin-bottom: 10px; }`}</style>
+      <div className="c-price"><h3>Pro Plan</h3><div className="c-price-num">$29<span style={{fontSize:'1rem',color:'#666'}}>/mo</span></div><ul className="c-price-feat"><li>✓ Unlimited Projects</li><li>✓ 24/7 Support</li><li>✓ Analytics API</li></ul><button style={{width:'100%', padding:'12px', background:'#4f46e5', color:'white', border:'none', borderRadius:'8px', fontWeight:'bold'}}>Subscribe</button></div>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">```jsx\n// Pricing Card\n```</TabItem>
 </Tabs>

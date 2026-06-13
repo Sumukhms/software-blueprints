@@ -8,89 +8,152 @@ import TabItem from '@theme/TabItem';
 
 # Button Components
 
-Generic button styles for various states and actions.
+A massive collection of button styles for any scenario.
 
-## Primary & Secondary Buttons
+## 1. Solid Buttons (Standard)
 
 <Tabs>
   <TabItem value="preview" label="Preview" default>
-    <div style={{ padding: '20px', fontFamily: 'system-ui, sans-serif', display: 'flex', gap: '15px' }}>
+    <div style={{ padding: '20px', display: 'flex', gap: '15px' }}>
       <style>
         {`
-          .btn-primary {
-            background: #4f46e5;
-            color: white;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-          }
-          .btn-primary:hover { background: #4338ca; }
-          
-          .btn-secondary {
-            background: white;
-            color: #111;
-            border: 1px solid #ddd;
-            padding: 10px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-          }
-          .btn-secondary:hover { background: #f9fafb; }
-          
-          .btn-danger {
-            background: #ef4444;
-            color: white;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-          }
-          .btn-danger:hover { background: #dc2626; }
+          .btn-solid { padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; transition: 0.2s; }
+          .btn-solid.primary { background: #4f46e5; color: white; }
+          .btn-solid.primary:hover { background: #4338ca; }
+          .btn-solid.secondary { background: #e5e7eb; color: #111; }
+          .btn-solid.secondary:hover { background: #d1d5db; }
+          .btn-solid.danger { background: #ef4444; color: white; }
+          .btn-solid.danger:hover { background: #dc2626; }
         `}
       </style>
-      <button className="btn-primary">Save Changes</button>
-      <button className="btn-secondary">Cancel</button>
-      <button className="btn-danger">Delete</button>
+      <button className="btn-solid primary">Save Changes</button>
+      <button className="btn-solid secondary">Cancel</button>
+      <button className="btn-solid danger">Delete</button>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
 
 ```jsx
-function ButtonGroup() {
-  return (
-    <div style={{ display: 'flex', gap: '15px' }}>
-      <button className="btn-primary">Save Changes</button>
-      <button className="btn-secondary">Cancel</button>
-      <button className="btn-danger">Delete</button>
-    </div>
-  );
-}
+<button className="btn-solid primary">Save Changes</button>
+<button className="btn-solid secondary">Cancel</button>
+<button className="btn-solid danger">Delete</button>
 ```
 
-```css
-.btn-primary {
-  background: #4f46e5; color: white; border: none;
-  padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer;
-}
-.btn-primary:hover { background: #4338ca; }
+  </TabItem>
+</Tabs>
 
-.btn-secondary {
-  background: white; color: #111; border: 1px solid #ddd;
-  padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer;
-}
-.btn-secondary:hover { background: #f9fafb; }
+## 2. Outline Buttons
 
-.btn-danger {
-  background: #ef4444; color: white; border: none;
-  padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer;
-}
-.btn-danger:hover { background: #dc2626; }
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ padding: '20px', display: 'flex', gap: '15px' }}>
+      <style>
+        {`
+          .btn-outline { padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; background: transparent; transition: 0.2s; }
+          .btn-outline.primary { border: 2px solid #4f46e5; color: #4f46e5; }
+          .btn-outline.primary:hover { background: #4f46e5; color: white; }
+          .btn-outline.danger { border: 2px solid #ef4444; color: #ef4444; }
+          .btn-outline.danger:hover { background: #ef4444; color: white; }
+        `}
+      </style>
+      <button className="btn-outline primary">Primary Outline</button>
+      <button className="btn-outline danger">Danger Outline</button>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+<button className="btn-outline primary">Primary Outline</button>
+<button className="btn-outline danger">Danger Outline</button>
+```
+
+  </TabItem>
+</Tabs>
+
+## 3. Ghost / Text Buttons
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ padding: '20px', display: 'flex', gap: '15px' }}>
+      <style>
+        {`
+          .btn-ghost { padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; background: transparent; transition: 0.2s; }
+          .btn-ghost.primary { color: #4f46e5; }
+          .btn-ghost.primary:hover { background: rgba(79, 70, 229, 0.1); }
+          .btn-ghost.gray { color: #6b7280; }
+          .btn-ghost.gray:hover { background: rgba(107, 114, 128, 0.1); color: #111; }
+        `}
+      </style>
+      <button className="btn-ghost primary">Ghost Primary</button>
+      <button className="btn-ghost gray">Ghost Gray</button>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+<button className="btn-ghost primary">Ghost Primary</button>
+<button className="btn-ghost gray">Ghost Gray</button>
+```
+
+  </TabItem>
+</Tabs>
+
+## 4. Icon-Only Buttons
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ padding: '20px', display: 'flex', gap: '15px' }}>
+      <style>
+        {`
+          .btn-icon { width: 45px; height: 45px; border-radius: 50%; font-weight: bold; cursor: pointer; border: none; transition: 0.2s; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+          .btn-icon.primary { background: #4f46e5; color: white; }
+          .btn-icon.primary:hover { background: #4338ca; transform: scale(1.1); }
+          .btn-icon.secondary { background: #e5e7eb; color: #111; }
+          .btn-icon.secondary:hover { background: #d1d5db; transform: scale(1.1); }
+        `}
+      </style>
+      <button className="btn-icon primary">➔</button>
+      <button className="btn-icon secondary">⚙</button>
+      <button className="btn-icon primary" style={{background: '#ef4444'}}>✖</button>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+<button className="btn-icon primary">➔</button>
+<button className="btn-icon secondary">⚙</button>
+<button className="btn-icon danger">✖</button>
+```
+
+  </TabItem>
+</Tabs>
+
+## 5. Neumorphic (3D) Buttons
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ padding: '40px 20px', display: 'flex', gap: '20px', background: '#e0e5ec', borderRadius: '12px' }}>
+      <style>
+        {`
+          .btn-neumorphic { 
+            padding: 15px 30px; border-radius: 12px; font-weight: bold; color: #4b5563; 
+            background: #e0e5ec; border: none; cursor: pointer; transition: 0.2s;
+            box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);
+          }
+          .btn-neumorphic:active {
+            box-shadow: inset 6px 6px 10px 0 rgba(163,177,198,0.7), inset -6px -6px 10px 0 rgba(255,255,255, 0.8);
+          }
+        `}
+      </style>
+      <button className="btn-neumorphic">Neumorphic 1</button>
+      <button className="btn-neumorphic">Neumorphic 2</button>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+<button className="btn-neumorphic">Neumorphic 1</button>
+<button className="btn-neumorphic">Neumorphic 2</button>
 ```
 
   </TabItem>

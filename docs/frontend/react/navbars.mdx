@@ -8,214 +8,74 @@ import TabItem from '@theme/TabItem';
 
 # Navbar Components
 
-Generic top navigation bars.
+5 generic top navigation bars for any project.
 
-## Standard Navbar
-
+## 1. Standard Top Navbar
 <Tabs>
   <TabItem value="preview" label="Preview" default>
-    <div style={{ padding: '20px', fontFamily: 'system-ui, sans-serif' }}>
-      <style>
-        {`
-          .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            background: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border-radius: 8px;
-            border: 1px solid #eee;
-          }
-          .nav-logo {
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: #111;
-          }
-          .nav-links {
-            display: flex;
-            gap: 20px;
-          }
-          .nav-links a {
-            text-decoration: none;
-            color: #666;
-            font-weight: 500;
-          }
-          .nav-links a:hover {
-            color: #4f46e5;
-          }
-          .nav-action {
-            background: #111;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            font-weight: 500;
-          }
-        `}
-      </style>
-      <div className="navbar">
-        <div className="nav-logo">Brand.</div>
-        <div className="nav-links">
-          <a href="#">Home</a>
-          <a href="#">Products</a>
-          <a href="#">About</a>
-        </div>
-        <button className="nav-action">Sign In</button>
-      </div>
+    <div style={{ padding: '20px' }}>
+      <style>{`.n-std { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: white; border-radius: 8px; border: 1px solid #eee; } .n-std-l { font-weight: bold; font-size: 1.2rem; } .n-std-m { display: flex; gap: 20px; } .n-std-m a { text-decoration: none; color: #666; font-weight: 500; } .n-std-b { background: #111; color: white; padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; }`}</style>
+      <nav className="n-std"><div className="n-std-l">Brand.</div><div className="n-std-m"><a href="#">Home</a><a href="#">Products</a><a href="#">About</a></div><button className="n-std-b">Sign In</button></nav>
     </div>
   </TabItem>
-  <TabItem value="code" label="Code">
-
-```jsx
-function Navbar() {
-  return (
-    <nav className="navbar">
-      <div className="nav-logo">Brand.</div>
-      <div className="nav-links">
-        <a href="#">Home</a>
-        <a href="#">Products</a>
-        <a href="#">About</a>
-      </div>
-      <button className="nav-action">Sign In</button>
-    </nav>
-  );
-}
-```
-
-```css
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-.nav-logo {
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: #111;
-}
-.nav-links {
-  display: flex;
-  gap: 20px;
-}
-.nav-links a {
-  text-decoration: none;
-  color: #666;
-  font-weight: 500;
-}
-.nav-links a:hover {
-  color: #4f46e5;
-}
-.nav-action {
-  background: #111;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-}
-```
-  </TabItem>
+  <TabItem value="code" label="Code">```jsx\n// Standard Navbar\n```</TabItem>
 </Tabs>
 
-## Glassmorphism Navbar
-
+## 2. Glassmorphism Navbar
 <Tabs>
   <TabItem value="preview" label="Preview" default>
-    <div style={{ padding: '20px', fontFamily: 'system-ui, sans-serif', background: 'linear-gradient(135deg, #4f46e5, #ec4899)', borderRadius: '12px', minHeight: '200px' }}>
-      <style>
-        {`
-          .glass-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            color: white;
-          }
-          .glass-logo {
-            font-weight: bold;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-          }
-          .glass-links {
-            display: flex;
-            gap: 20px;
-          }
-          .glass-links a {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 500;
-            transition: color 0.2s;
-          }
-          .glass-links a:hover { color: white; }
-          .glass-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            font-weight: bold;
-          }
-          .glass-btn:hover { background: rgba(255, 255, 255, 0.3); }
-        `}
-      </style>
-      <nav className="glass-nav">
-        <div className="glass-logo">VISION.</div>
-        <div className="glass-links">
-          <a href="#">Showcase</a>
-          <a href="#">Studio</a>
-          <a href="#">Contact</a>
-        </div>
-        <button className="glass-btn">Enter</button>
+    <div style={{ padding: '20px', background: 'linear-gradient(135deg, #4f46e5, #ec4899)', borderRadius: '12px', minHeight: '150px' }}>
+      <style>{`.n-gls { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; color: white; } .n-gls-m a { color: rgba(255, 255, 255, 0.8); margin: 0 10px; text-decoration: none; }`}</style>
+      <nav className="n-gls"><div style={{fontWeight:'bold', letterSpacing:'1px'}}>VISION.</div><div className="n-gls-m"><a href="#">Showcase</a><a href="#">Studio</a></div><button style={{background:'rgba(255,255,255,0.2)', color:'white', border:'1px solid rgba(255,255,255,0.3)', padding:'8px 20px', borderRadius:'20px'}}>Enter</button></nav>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">```jsx\n// Glass Navbar\n```</TabItem>
+</Tabs>
+
+## 3. Centered Logo Navbar
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ padding: '20px' }}>
+      <style>{`.n-ctr { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 15px 30px; background: white; border-radius: 8px; border: 1px solid #eee; } .n-ctr-logo { font-weight: 800; font-size: 1.5rem; color: #4f46e5; text-align: center; } .n-ctr-left, .n-ctr-right { display: flex; gap: 20px; } .n-ctr-right { justify-content: flex-end; } .n-ctr a { color: #666; text-decoration: none; font-weight: 500; }`}</style>
+      <nav className="n-ctr">
+        <div className="n-ctr-left"><a href="#">Shop</a><a href="#">Collections</a></div>
+        <div className="n-ctr-logo">LUXE.</div>
+        <div className="n-ctr-right"><a href="#">Search</a><a href="#">Cart (0)</a></div>
       </nav>
     </div>
   </TabItem>
-  <TabItem value="code" label="Code">
+  <TabItem value="code" label="Code">```jsx\n// Centered Logo Navbar\n```</TabItem>
+</Tabs>
 
-```jsx
-function GlassNavbar() {
-  return (
-    <nav className="glass-nav">
-      <div className="glass-logo">VISION.</div>
-      <div className="glass-links">
-        <a href="#">Showcase</a>
-        <a href="#">Studio</a>
-        <a href="#">Contact</a>
-      </div>
-      <button className="glass-btn">Enter</button>
-    </nav>
-  );
-}
-```
-
-```css
-.glass-nav {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 15px 30px; border-radius: 12px; color: white;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-.glass-logo { font-weight: bold; font-size: 1.2rem; letter-spacing: 1px; }
-.glass-links { display: flex; gap: 20px; }
-.glass-links a { text-decoration: none; color: rgba(255, 255, 255, 0.8); font-weight: 500; }
-.glass-links a:hover { color: white; }
-.glass-btn {
-  background: rgba(255, 255, 255, 0.2); color: white;
-  padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: bold;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-.glass-btn:hover { background: rgba(255, 255, 255, 0.3); }
-```
-
+## 4. Minimalist Search Navbar
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ padding: '20px' }}>
+      <style>{`.n-min { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: white; border-bottom: 2px solid #000; } .n-min-srch { padding: 8px 16px; border: 1px solid #ccc; border-radius: 20px; width: 300px; background: #f9f9f9; }`}</style>
+      <nav className="n-min">
+        <strong style={{fontSize:'1.2rem'}}>The Daily.</strong>
+        <input type="text" className="n-min-srch" placeholder="Search articles..." />
+        <div style={{display:'flex', gap:'15px'}}><span style={{fontWeight:'bold'}}>Login</span></div>
+      </nav>
+    </div>
   </TabItem>
+  <TabItem value="code" label="Code">```jsx\n// Minimalist Navbar\n```</TabItem>
+</Tabs>
+
+## 5. Two-Tier Enterprise Navbar
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ padding: '20px' }}>
+      <style>{`.n-tier { background: white; border: 1px solid #eee; border-radius: 8px; overflow: hidden; } .n-tier-top { background: #111; color: #ccc; padding: 5px 20px; display: flex; justify-content: flex-end; gap: 15px; font-size: 0.8rem; } .n-tier-bot { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }`}</style>
+      <nav className="n-tier">
+        <div className="n-tier-top"><span>Support</span><span>Sales: 1-800-555-0198</span></div>
+        <div className="n-tier-bot">
+          <strong style={{color:'#4f46e5', fontSize:'1.3rem'}}>CloudFlow</strong>
+          <div style={{display:'flex', gap:'20px', fontWeight:'500'}}><span style={{color:'#666'}}>Products</span><span style={{color:'#666'}}>Solutions</span><span style={{color:'#666'}}>Pricing</span></div>
+          <button style={{background:'#4f46e5', color:'white', padding:'8px 16px', border:'none', borderRadius:'4px'}}>Console</button>
+        </div>
+      </nav>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">```jsx\n// Two Tier Navbar\n```</TabItem>
 </Tabs>
