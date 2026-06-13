@@ -16,7 +16,7 @@ To get the site running on your computer:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/Sumukhms/software-blueprints.git
+git clone https://github.com/software-blueprints-hq/software-blueprints.git
 cd software-blueprints
 
 # 2. Install dependencies
@@ -98,11 +98,27 @@ We want users to see the visual preview first, and click a tab to see the code.
 
 ---
 
-## 4. Submitting Your Changes
+## 4. Git Workflow (Pulling & Pushing)
 
-When you are done writing your blueprint:
-1. `git add .`
-2. `git commit -m "Added new amazing architecture blueprint"`
-3. `git push origin main`
+Since you are collaborating with a team, you need to make sure you have the latest code before you start working, and you need to push your changes properly when you are done.
 
-The live website (once hosted on Vercel) will automatically update!
+### Before you start working (Always Pull!)
+Always pull the latest changes from the main repository so you don't get merge conflicts:
+```bash
+git pull origin main
+```
+
+### When you are done making changes
+Once you have tested your new blueprint or template locally, upload it to GitHub:
+```bash
+# 1. Stage all your changed files
+git add .
+
+# 2. Commit your changes with a descriptive message
+git commit -m "Added a new E-Commerce architecture blueprint"
+
+# 3. Push your changes to the GitHub organization
+git push origin main
+```
+
+The live website will automatically update once the code reaches the `main` branch on GitHub!
