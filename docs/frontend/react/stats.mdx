@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # Dashboard Stats
 
-5 distinct data visualization components.
+Enterprise-grade data visualization widgets with semantic `<article>` tags, accessibility labels, and strict flex/grid systems for mobile responsiveness.
 
 ## 1. Simple KPI Grid
 <Tabs>
@@ -16,15 +16,23 @@ import TabItem from '@theme/TabItem';
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
       <style>
         {`
-          .s-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-          .s-card { background: white; padding: 20px; border-radius: 10px; border: 1px solid #e5e7eb; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-          .s-card h4 { color: #6b7280; margin: 0 0 10px; font-weight: 500; text-transform: uppercase; font-size: 0.9rem; }
-          .s-val { font-size: 2rem; font-weight: bold; margin: 0 0 5px; }
+          .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+          .kpi-card { background: white; padding: 20px; border-radius: 10px; border: 1px solid #e5e7eb; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+          .kpi-card h4 { color: #6b7280; margin: 0 0 10px; font-weight: 500; text-transform: uppercase; font-size: 0.9rem; }
+          .kpi-val { font-size: 2rem; font-weight: bold; margin: 0 0 5px; }
         `}
       </style>
-      <div className="s-grid">
-        <div className="s-card"><h4>Revenue</h4><p className="s-val">$45K</p><span style={{color:'#10b981'}}>↑ 12%</span></div>
-        <div className="s-card"><h4>Users</h4><p className="s-val">2.4K</p><span style={{color:'#10b981'}}>↑ 4%</span></div>
+      <div className="kpi-grid">
+        <article className="kpi-card" aria-label="Revenue KPI">
+          <h4>Revenue</h4>
+          <p className="kpi-val">$45K</p>
+          <span style={{color:'#10b981'}} aria-label="Up 12 percent">↑ 12%</span>
+        </article>
+        <article className="kpi-card" aria-label="Users KPI">
+          <h4>Users</h4>
+          <p className="kpi-val">2.4K</p>
+          <span style={{color:'#10b981'}} aria-label="Up 4 percent">↑ 4%</span>
+        </article>
       </div>
     </div>
   </TabItem>
@@ -34,16 +42,16 @@ import TabItem from '@theme/TabItem';
 export default function KPIGrid() {
   return (
     <div className="kpi-grid">
-      <div className="kpi-card">
+      <article className="kpi-card" aria-label="Revenue KPI">
         <h4>Revenue</h4>
         <p className="kpi-val">$45K</p>
-        <span className="trend up">↑ 12%</span>
-      </div>
-      <div className="kpi-card">
+        <span className="trend up" aria-label="Up 12 percent">↑ 12%</span>
+      </article>
+      <article className="kpi-card" aria-label="Users KPI">
         <h4>Users</h4>
         <p className="kpi-val">2.4K</p>
-        <span className="trend up">↑ 4%</span>
-      </div>
+        <span className="trend up" aria-label="Up 4 percent">↑ 4%</span>
+      </article>
     </div>
   );
 }
@@ -52,6 +60,7 @@ export default function KPIGrid() {
 ```css
 .kpi-grid {
   display: grid;
+  /* Auto-fit makes it inherently mobile responsive */
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
@@ -87,17 +96,24 @@ export default function KPIGrid() {
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
       <style>
         {`
-          .s-prof { display: flex; gap: 40px; background: white; padding: 20px 40px; border-radius: 12px; border: 1px solid #eee; display: inline-flex; }
-          .s-prof-i { text-align: center; }
-          .s-prof-i strong { font-size: 1.5rem; display: block; }
-          .s-prof-i span { color: #666; font-size: 0.9rem; }
+          .profile-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; background: white; padding: 20px 40px; border-radius: 12px; border: 1px solid #eee; }
+          .stat-item { text-align: center; }
+          .stat-item strong { font-size: 1.5rem; display: block; }
+          .stat-item span { color: #666; font-size: 0.9rem; }
+          @media (max-width: 480px) { .profile-stats { gap: 20px; padding: 15px; } .stat-item strong { font-size: 1.2rem; } }
         `}
       </style>
-      <div className="s-prof">
-        <div className="s-prof-i"><strong>128</strong><span>Posts</span></div>
-        <div className="s-prof-i"><strong>14k</strong><span>Followers</span></div>
-        <div className="s-prof-i"><strong>352</strong><span>Following</span></div>
-      </div>
+      <section className="profile-stats" aria-label="User Activity Stats">
+        <div className="stat-item">
+          <strong>128</strong><span>Posts</span>
+        </div>
+        <div className="stat-item">
+          <strong>14k</strong><span>Followers</span>
+        </div>
+        <div className="stat-item">
+          <strong>352</strong><span>Following</span>
+        </div>
+      </section>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -105,7 +121,7 @@ export default function KPIGrid() {
 ```jsx
 export default function ProfileStats() {
   return (
-    <div className="profile-stats">
+    <section className="profile-stats" aria-label="User Activity Stats">
       <div className="stat-item">
         <strong>128</strong>
         <span>Posts</span>
@@ -118,14 +134,16 @@ export default function ProfileStats() {
         <strong>352</strong>
         <span>Following</span>
       </div>
-    </div>
+    </section>
   );
 }
 ```
 
 ```css
 .profile-stats {
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap; /* Wraps items on tiny screens */
+  justify-content: center;
   gap: 40px;
   background: white;
   padding: 20px 40px;
@@ -136,10 +154,16 @@ export default function ProfileStats() {
 .stat-item strong {
   font-size: 1.5rem;
   display: block;
+  color: #111;
 }
 .stat-item span {
   color: #666;
   font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .profile-stats { gap: 20px; padding: 15px; }
+  .stat-item strong { font-size: 1.2rem; }
 }
 ```
 
@@ -152,17 +176,22 @@ export default function ProfileStats() {
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
       <style>
         {`
-          .s-prog { background: white; padding: 25px; border-radius: 12px; border: 1px solid #eee; max-width: 400px; }
-          .s-prog-h { display: flex; justify-content: space-between; margin-bottom: 15px; }
-          .s-prog-t { width: 100%; background: #e5e7eb; height: 10px; border-radius: 5px; overflow: hidden; }
-          .s-prog-f { background: #4f46e5; height: 100%; width: 75%; }
+          .progress-stat { background: white; padding: 25px; border-radius: 12px; border: 1px solid #eee; max-width: 400px; width: 100%; box-sizing: border-box; }
+          .progress-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
+          .progress-track { width: 100%; background: #e5e7eb; height: 10px; border-radius: 5px; overflow: hidden; }
+          .progress-fill { background: #4f46e5; height: 100%; width: 75%; }
         `}
       </style>
-      <div className="s-prog">
-        <div className="s-prog-h"><strong>Storage Used</strong><span>75%</span></div>
-        <div className="s-prog-t"><div className="s-prog-f"></div></div>
+      <article className="progress-stat">
+        <div className="progress-header">
+          <strong>Storage Used</strong>
+          <span aria-hidden="true">75%</span>
+        </div>
+        <div className="progress-track" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+          <div className="progress-fill"></div>
+        </div>
         <p style={{color:'#666', fontSize:'0.9rem', margin:'15px 0 0'}}>75 GB of 100 GB</p>
-      </div>
+      </article>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -170,16 +199,17 @@ export default function ProfileStats() {
 ```jsx
 export default function ProgressStat() {
   return (
-    <div className="progress-stat">
+    <article className="progress-stat">
       <div className="progress-header">
         <strong>Storage Used</strong>
-        <span>75%</span>
+        <span aria-hidden="true">75%</span>
       </div>
-      <div className="progress-track">
+      {/* Proper ARIA roles for progress bars */}
+      <div className="progress-track" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
         <div className="progress-fill" style={{ width: '75%' }}></div>
       </div>
       <p className="progress-desc">75 GB of 100 GB</p>
-    </div>
+    </article>
   );
 }
 ```
@@ -191,6 +221,8 @@ export default function ProgressStat() {
   border-radius: 12px;
   border: 1px solid #eee;
   max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
 }
 .progress-header {
   display: flex;
@@ -224,10 +256,15 @@ export default function ProgressStat() {
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
       <style>
         {`
-          .s-bdg { display: inline-flex; align-items: center; gap: 10px; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 10px 20px; border-radius: 30px; color: #166534; font-weight: bold; }
+          .metric-badge { display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 30px; font-weight: bold; }
+          .metric-badge.success { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+          .metric-badge.success .dot { background: #22c55e; width: 10px; height: 10px; border-radius: 50%; }
         `}
       </style>
-      <div className="s-bdg"><span style={{background:'#22c55e', width:'10px', height:'10px', borderRadius:'50%'}}></span>System Operational (99.9%)</div>
+      <div className="metric-badge success" role="status" aria-label="System is operational">
+        <span className="dot" aria-hidden="true"></span>
+        System Operational (99.9%)
+      </div>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -235,8 +272,9 @@ export default function ProgressStat() {
 ```jsx
 export default function MetricBadge() {
   return (
-    <div className="metric-badge success">
-      <span className="dot"></span>
+    {/* role="status" allows screen readers to announce state changes */}
+    <div className="metric-badge success" role="status" aria-label="System is operational">
+      <span className="dot" aria-hidden="true"></span>
       System Operational (99.9%)
     </div>
   );
@@ -257,7 +295,9 @@ export default function MetricBadge() {
   border: 1px solid #bbf7d0;
   color: #166534;
 }
-.metric-badge.success .dot { background: #22c55e; }
+.metric-badge.success .dot { 
+  background: #22c55e; 
+}
 .dot {
   width: 10px;
   height: 10px;
@@ -274,14 +314,17 @@ export default function MetricBadge() {
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
       <style>
         {`
-          .s-mini { display: flex; align-items: center; gap: 20px; background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; width: max-content; }
-          .s-mini-i { width: 50px; height: 50px; background: #e0e7ff; color: #4f46e5; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 1.5rem; font-weight: bold; }
+          .mini-metric { display: flex; align-items: center; gap: 20px; background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; width: 100%; max-width: max-content; box-sizing: border-box; }
+          .metric-icon { width: 50px; height: 50px; background: #e0e7ff; color: #4f46e5; display: flex; align-items: center; justify-content: center; border-radius: 12px; font-size: 1.5rem; font-weight: bold; }
         `}
       </style>
-      <div className="s-mini">
-        <div className="s-mini-i">★</div>
-        <div><p style={{color:'#666', margin:'0 0 5px'}}>Avg. Rating</p><strong style={{fontSize:'1.5rem'}}>4.9/5</strong></div>
-      </div>
+      <article className="mini-metric">
+        <div className="metric-icon" aria-hidden="true">★</div>
+        <div className="metric-info">
+          <p style={{color:'#666', margin:'0 0 5px'}}>Avg. Rating</p>
+          <strong style={{fontSize:'1.5rem'}}>4.9/5</strong>
+        </div>
+      </article>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -289,13 +332,13 @@ export default function MetricBadge() {
 ```jsx
 export default function MiniMetric() {
   return (
-    <div className="mini-metric">
-      <div className="metric-icon">★</div>
+    <article className="mini-metric">
+      <div className="metric-icon" aria-hidden="true">★</div>
       <div className="metric-info">
         <p>Avg. Rating</p>
         <strong>4.9/5</strong>
       </div>
-    </div>
+    </article>
   );
 }
 ```
@@ -309,7 +352,9 @@ export default function MiniMetric() {
   padding: 20px;
   border-radius: 12px;
   border: 1px solid #eee;
-  width: max-content;
+  width: 100%;
+  max-width: max-content; /* Grows if needed, responsive width */
+  box-sizing: border-box;
 }
 .metric-icon {
   width: 50px;

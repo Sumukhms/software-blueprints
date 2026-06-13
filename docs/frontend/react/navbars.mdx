@@ -8,14 +8,22 @@ import TabItem from '@theme/TabItem';
 
 # Navbar Components
 
-5 generic top navigation bars for any project.
+Enterprise-grade navigation bars featuring strict semantic `<nav>` wrappers, accessibility aria labels, and responsive mobile stacking.
 
 ## 1. Standard Top Navbar
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ padding: '20px' }}>
-      <style>{`.n-std { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: white; border-radius: 8px; border: 1px solid #eee; } .n-std-l { font-weight: bold; font-size: 1.2rem; } .n-std-m { display: flex; gap: 20px; } .n-std-m a { text-decoration: none; color: #666; font-weight: 500; } .n-std-b { background: #111; color: white; padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; }`}</style>
-      <nav className="n-std"><div className="n-std-l">Brand.</div><div className="n-std-m"><a href="#">Home</a><a href="#">Products</a><a href="#">About</a></div><button className="n-std-b">Sign In</button></nav>
+      <style>{`.navbar-standard { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: white; border-radius: 8px; border: 1px solid #eee; flex-wrap: wrap; gap: 15px; } .navbar-logo { font-weight: bold; font-size: 1.2rem; } .navbar-links { display: flex; gap: 20px; flex-wrap: wrap; } .navbar-links a { text-decoration: none; color: #666; font-weight: 500; outline: none; border-radius: 4px; padding: 2px 4px; } .navbar-links a:focus-visible { box-shadow: 0 0 0 2px #4f46e5; } .navbar-btn { background: #111; color: white; padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; outline: none; } .navbar-btn:focus-visible { box-shadow: 0 0 0 3px rgba(17,17,17,0.4); } @media (max-width: 600px) { .navbar-standard { flex-direction: column; align-items: flex-start; } }`}</style>
+      <nav className="navbar-standard" aria-label="Main Navigation">
+        <div className="navbar-logo">Brand.</div>
+        <div className="navbar-links" role="menubar">
+          <a href="#" role="menuitem">Home</a>
+          <a href="#" role="menuitem">Products</a>
+          <a href="#" role="menuitem">About</a>
+        </div>
+        <button type="button" className="navbar-btn">Sign In</button>
+      </nav>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -23,14 +31,14 @@ import TabItem from '@theme/TabItem';
 ```jsx
 export default function StandardNavbar() {
   return (
-    <nav className="navbar-standard">
+    <nav className="navbar-standard" aria-label="Main Navigation">
       <div className="navbar-logo">Brand.</div>
-      <div className="navbar-links">
-        <a href="#">Home</a>
-        <a href="#">Products</a>
-        <a href="#">About</a>
+      <div className="navbar-links" role="menubar">
+        <a href="#" role="menuitem">Home</a>
+        <a href="#" role="menuitem">Products</a>
+        <a href="#" role="menuitem">About</a>
       </div>
-      <button className="navbar-btn">Sign In</button>
+      <button type="button" className="navbar-btn">Sign In</button>
     </nav>
   );
 }
@@ -45,20 +53,20 @@ export default function StandardNavbar() {
   background: white;
   border-radius: 8px;
   border: 1px solid #eee;
+  flex-wrap: wrap;
+  gap: 15px;
 }
-.navbar-logo {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-.navbar-links {
-  display: flex;
-  gap: 20px;
-}
+.navbar-logo { font-weight: bold; font-size: 1.2rem; }
+.navbar-links { display: flex; gap: 20px; flex-wrap: wrap; }
 .navbar-links a {
   text-decoration: none;
   color: #666;
   font-weight: 500;
+  outline: none;
+  border-radius: 4px;
+  padding: 2px 4px;
 }
+.navbar-links a:focus-visible { box-shadow: 0 0 0 2px #4f46e5; }
 .navbar-btn {
   background: #111;
   color: white;
@@ -66,6 +74,16 @@ export default function StandardNavbar() {
   border-radius: 6px;
   border: none;
   cursor: pointer;
+  outline: none;
+}
+.navbar-btn:focus-visible { box-shadow: 0 0 0 3px rgba(17,17,17,0.4); }
+
+/* Enterprise Mobile Responsiveness */
+@media (max-width: 600px) {
+  .navbar-standard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 ```
 
@@ -76,8 +94,15 @@ export default function StandardNavbar() {
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ padding: '20px', background: 'linear-gradient(135deg, #4f46e5, #ec4899)', borderRadius: '12px', minHeight: '150px' }}>
-      <style>{`.n-gls { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; color: white; } .n-gls-m a { color: rgba(255, 255, 255, 0.8); margin: 0 10px; text-decoration: none; }`}</style>
-      <nav className="n-gls"><div style={{fontWeight:'bold', letterSpacing:'1px'}}>VISION.</div><div className="n-gls-m"><a href="#">Showcase</a><a href="#">Studio</a></div><button style={{background:'rgba(255,255,255,0.2)', color:'white', border:'1px solid rgba(255,255,255,0.3)', padding:'8px 20px', borderRadius:'20px'}}>Enter</button></nav>
+      <style>{`.navbar-glass { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; color: white; flex-wrap: wrap; gap: 15px; } .glass-logo { font-weight: bold; letter-spacing: 1px; } .glass-links a { color: rgba(255, 255, 255, 0.8); margin: 0 10px; text-decoration: none; outline: none; border-radius: 4px; } .glass-links a:focus-visible { outline: 2px solid white; } .glass-btn { background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 20px; border-radius: 20px; cursor: pointer; outline: none; } .glass-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; } @media (max-width: 600px) { .navbar-glass { flex-direction: column; text-align: center; } }`}</style>
+      <nav className="navbar-glass" aria-label="Glass Navigation">
+        <div className="glass-logo">VISION.</div>
+        <div className="glass-links">
+          <a href="#">Showcase</a>
+          <a href="#">Studio</a>
+        </div>
+        <button type="button" className="glass-btn">Enter</button>
+      </nav>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -85,13 +110,13 @@ export default function StandardNavbar() {
 ```jsx
 export default function GlassNavbar() {
   return (
-    <nav className="navbar-glass">
+    <nav className="navbar-glass" aria-label="Glass Navigation">
       <div className="glass-logo">VISION.</div>
       <div className="glass-links">
         <a href="#">Showcase</a>
         <a href="#">Studio</a>
       </div>
-      <button className="glass-btn">Enter</button>
+      <button type="button" className="glass-btn">Enter</button>
     </nav>
   );
 }
@@ -108,16 +133,18 @@ export default function GlassNavbar() {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   color: white;
+  flex-wrap: wrap;
+  gap: 15px;
 }
-.glass-logo {
-  font-weight: bold;
-  letter-spacing: 1px;
-}
+.glass-logo { font-weight: bold; letter-spacing: 1px; }
 .glass-links a {
   color: rgba(255, 255, 255, 0.8);
   margin: 0 10px;
   text-decoration: none;
+  outline: none;
+  border-radius: 4px;
 }
+.glass-links a:focus-visible { outline: 2px solid white; }
 .glass-btn {
   background: rgba(255,255,255,0.2);
   color: white;
@@ -125,6 +152,12 @@ export default function GlassNavbar() {
   padding: 8px 20px;
   border-radius: 20px;
   cursor: pointer;
+  outline: none;
+}
+.glass-btn:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+
+@media (max-width: 600px) {
+  .navbar-glass { flex-direction: column; text-align: center; }
 }
 ```
 
@@ -135,11 +168,17 @@ export default function GlassNavbar() {
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ padding: '20px' }}>
-      <style>{`.n-ctr { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 15px 30px; background: white; border-radius: 8px; border: 1px solid #eee; } .n-ctr-logo { font-weight: 800; font-size: 1.5rem; color: #4f46e5; text-align: center; } .n-ctr-left, .n-ctr-right { display: flex; gap: 20px; } .n-ctr-right { justify-content: flex-end; } .n-ctr a { color: #666; text-decoration: none; font-weight: 500; }`}</style>
-      <nav className="n-ctr">
-        <div className="n-ctr-left"><a href="#">Shop</a><a href="#">Collections</a></div>
-        <div className="n-ctr-logo">LUXE.</div>
-        <div className="n-ctr-right"><a href="#">Search</a><a href="#">Cart (0)</a></div>
+      <style>{`.navbar-centered { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 15px 30px; background: white; border-radius: 8px; border: 1px solid #eee; gap: 15px; } .nav-logo { font-weight: 800; font-size: 1.5rem; color: #4f46e5; text-align: center; } .nav-left, .nav-right { display: flex; gap: 20px; flex-wrap: wrap; } .nav-right { justify-content: flex-end; } .navbar-centered a { color: #666; text-decoration: none; font-weight: 500; outline: none; border-radius: 4px; } .navbar-centered a:focus-visible { box-shadow: 0 0 0 2px #4f46e5; } @media (max-width: 768px) { .navbar-centered { grid-template-columns: 1fr; text-align: center; } .nav-left, .nav-right { justify-content: center; } }`}</style>
+      <nav className="navbar-centered" aria-label="E-Commerce Navigation">
+        <div className="nav-left">
+          <a href="#">Shop</a>
+          <a href="#">Collections</a>
+        </div>
+        <div className="nav-logo">LUXE.</div>
+        <div className="nav-right">
+          <a href="#">Search</a>
+          <a href="#">Cart (0)</a>
+        </div>
       </nav>
     </div>
   </TabItem>
@@ -148,7 +187,7 @@ export default function GlassNavbar() {
 ```jsx
 export default function CenteredNavbar() {
   return (
-    <nav className="navbar-centered">
+    <nav className="navbar-centered" aria-label="E-Commerce Navigation">
       <div className="nav-left">
         <a href="#">Shop</a>
         <a href="#">Collections</a>
@@ -172,6 +211,7 @@ export default function CenteredNavbar() {
   background: white;
   border-radius: 8px;
   border: 1px solid #eee;
+  gap: 15px;
 }
 .nav-logo {
   font-weight: 800;
@@ -182,14 +222,21 @@ export default function CenteredNavbar() {
 .nav-left, .nav-right {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
-.nav-right {
-  justify-content: flex-end;
-}
+.nav-right { justify-content: flex-end; }
 .navbar-centered a {
   color: #666;
   text-decoration: none;
   font-weight: 500;
+  outline: none;
+  border-radius: 4px;
+}
+.navbar-centered a:focus-visible { box-shadow: 0 0 0 2px #4f46e5; }
+
+@media (max-width: 768px) {
+  .navbar-centered { grid-template-columns: 1fr; text-align: center; }
+  .nav-left, .nav-right { justify-content: center; }
 }
 ```
 
@@ -200,11 +247,13 @@ export default function CenteredNavbar() {
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ padding: '20px' }}>
-      <style>{`.n-min { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: white; border-bottom: 2px solid #000; } .n-min-srch { padding: 8px 16px; border: 1px solid #ccc; border-radius: 20px; width: 300px; background: #f9f9f9; }`}</style>
-      <nav className="n-min">
-        <strong style={{fontSize:'1.2rem'}}>The Daily.</strong>
-        <input type="text" className="n-min-srch" placeholder="Search articles..." />
-        <div style={{display:'flex', gap:'15px'}}><span style={{fontWeight:'bold'}}>Login</span></div>
+      <style>{`.navbar-minimal { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: white; border-bottom: 2px solid #000; flex-wrap: wrap; gap: 15px; } .nav-brand { font-size: 1.2rem; } .nav-search { padding: 8px 16px; border: 1px solid #ccc; border-radius: 20px; width: 100%; max-width: 300px; background: #f9f9f9; outline: none; } .nav-search:focus { border-color: #000; box-shadow: 0 0 0 2px rgba(0,0,0,0.1); } .nav-actions button { background: transparent; border: none; font-weight: bold; cursor: pointer; outline: none; border-radius: 4px; padding: 4px 8px; } .nav-actions button:focus-visible { box-shadow: 0 0 0 2px #000; } @media (max-width: 600px) { .nav-search { order: 3; max-width: 100%; } }`}</style>
+      <nav className="navbar-minimal" aria-label="Search Navigation">
+        <strong className="nav-brand">The Daily.</strong>
+        <input type="search" aria-label="Search articles" className="nav-search" placeholder="Search articles..." />
+        <div className="nav-actions">
+          <button type="button">Login</button>
+        </div>
       </nav>
     </div>
   </TabItem>
@@ -213,11 +262,11 @@ export default function CenteredNavbar() {
 ```jsx
 export default function SearchNavbar() {
   return (
-    <nav className="navbar-minimal">
+    <nav className="navbar-minimal" aria-label="Search Navigation">
       <strong className="nav-brand">The Daily.</strong>
-      <input type="text" className="nav-search" placeholder="Search articles..." />
+      <input type="search" aria-label="Search articles" className="nav-search" placeholder="Search articles..." />
       <div className="nav-actions">
-        <span className="nav-login">Login</span>
+        <button type="button">Login</button>
       </div>
     </nav>
   );
@@ -232,24 +281,36 @@ export default function SearchNavbar() {
   padding: 10px 20px;
   background: white;
   border-bottom: 2px solid #000;
+  flex-wrap: wrap;
+  gap: 15px;
 }
-.nav-brand {
-  font-size: 1.2rem;
-}
+.nav-brand { font-size: 1.2rem; }
 .nav-search {
   padding: 8px 16px;
   border: 1px solid #ccc;
   border-radius: 20px;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   background: #f9f9f9;
+  outline: none;
 }
-.nav-actions {
-  display: flex;
-  gap: 15px;
+.nav-search:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
 }
-.nav-login {
+.nav-actions button {
+  background: transparent;
+  border: none;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+.nav-actions button:focus-visible { box-shadow: 0 0 0 2px #000; }
+
+@media (max-width: 600px) {
+  .nav-search { order: 3; max-width: 100%; }
 }
 ```
 
@@ -260,13 +321,20 @@ export default function SearchNavbar() {
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ padding: '20px' }}>
-      <style>{`.n-tier { background: white; border: 1px solid #eee; border-radius: 8px; overflow: hidden; } .n-tier-top { background: #111; color: #ccc; padding: 5px 20px; display: flex; justify-content: flex-end; gap: 15px; font-size: 0.8rem; } .n-tier-bot { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }`}</style>
-      <nav className="n-tier">
-        <div className="n-tier-top"><span>Support</span><span>Sales: 1-800-555-0198</span></div>
-        <div className="n-tier-bot">
-          <strong style={{color:'#4f46e5', fontSize:'1.3rem'}}>CloudFlow</strong>
-          <div style={{display:'flex', gap:'20px', fontWeight:'500'}}><span style={{color:'#666'}}>Products</span><span style={{color:'#666'}}>Solutions</span><span style={{color:'#666'}}>Pricing</span></div>
-          <button style={{background:'#4f46e5', color:'white', padding:'8px 16px', border:'none', borderRadius:'4px'}}>Console</button>
+      <style>{`.navbar-tier { background: white; border: 1px solid #eee; border-radius: 8px; overflow: hidden; } .tier-top { background: #111; color: #ccc; padding: 5px 20px; display: flex; justify-content: flex-end; gap: 15px; font-size: 0.8rem; } .tier-bottom { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; } .tier-brand { color: #4f46e5; font-size: 1.3rem; } .tier-links { display: flex; gap: 20px; font-weight: 500; } .tier-links a { color: #666; text-decoration: none; outline: none; border-radius: 4px; } .tier-links a:focus-visible { box-shadow: 0 0 0 2px #4f46e5; } .tier-btn { background: #4f46e5; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; outline: none; } .tier-btn:focus-visible { box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4); } @media (max-width: 600px) { .tier-bottom { flex-direction: column; align-items: flex-start; } .tier-top { justify-content: center; } }`}</style>
+      <nav className="navbar-tier" aria-label="Enterprise Navigation">
+        <div className="tier-top" aria-label="Utility Links">
+          <span>Support</span>
+          <span>Sales: 1-800-555-0198</span>
+        </div>
+        <div className="tier-bottom">
+          <strong className="tier-brand">CloudFlow</strong>
+          <div className="tier-links">
+            <a href="#">Products</a>
+            <a href="#">Solutions</a>
+            <a href="#">Pricing</a>
+          </div>
+          <button type="button" className="tier-btn">Console</button>
         </div>
       </nav>
     </div>
@@ -276,19 +344,19 @@ export default function SearchNavbar() {
 ```jsx
 export default function TwoTierNavbar() {
   return (
-    <nav className="navbar-tier">
-      <div className="tier-top">
+    <nav className="navbar-tier" aria-label="Enterprise Navigation">
+      <div className="tier-top" aria-label="Utility Links">
         <span>Support</span>
         <span>Sales: 1-800-555-0198</span>
       </div>
       <div className="tier-bottom">
         <strong className="tier-brand">CloudFlow</strong>
         <div className="tier-links">
-          <span>Products</span>
-          <span>Solutions</span>
-          <span>Pricing</span>
+          <a href="#">Products</a>
+          <a href="#">Solutions</a>
+          <a href="#">Pricing</a>
         </div>
-        <button className="tier-btn">Console</button>
+        <button type="button" className="tier-btn">Console</button>
       </div>
     </nav>
   );
@@ -316,18 +384,21 @@ export default function TwoTierNavbar() {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 .tier-brand {
   color: #4f46e5;
   font-size: 1.3rem;
 }
-.tier-links {
-  display: flex;
-  gap: 20px;
-  font-weight: 500;
+.tier-links { display: flex; gap: 20px; font-weight: 500; }
+.tier-links a {
   color: #666;
+  text-decoration: none;
+  outline: none;
+  border-radius: 4px;
 }
-.tier-links span { cursor: pointer; }
+.tier-links a:focus-visible { box-shadow: 0 0 0 2px #4f46e5; }
 .tier-btn {
   background: #4f46e5;
   color: white;
@@ -335,6 +406,13 @@ export default function TwoTierNavbar() {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  outline: none;
+}
+.tier-btn:focus-visible { box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4); }
+
+@media (max-width: 600px) {
+  .tier-bottom { flex-direction: column; align-items: flex-start; }
+  .tier-top { justify-content: center; }
 }
 ```
 

@@ -8,14 +8,25 @@ import TabItem from '@theme/TabItem';
 
 # Forms & Authentication
 
-5 generic forms for auth and data collection.
+Enterprise-grade forms featuring semantic `<form>` wrappers, strict accessibility labeling (`htmlFor` + `id`), and clear interactive focus states.
 
 ## 1. Dark Mode Login
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ fontFamily: 'system-ui, sans-serif', padding: '20px', background: '#0a0a0a', borderRadius: '12px', display: 'flex', justifyContent: 'center' }}>
-      <style>{`.f-drk { background: #171717; padding: 40px; border-radius: 12px; border: 1px solid #333; width: 100%; max-width: 400px; color: white; } .f-drk-i { width: 100%; padding: 12px; border-radius: 6px; background: #262626; border: 1px solid #404040; color: white; margin-bottom: 20px; box-sizing: border-box; } .f-drk-b { width: 100%; padding: 12px; background: #4f46e5; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }`}</style>
-      <div className="f-drk"><h2 style={{margin:'0 0 20px'}}>Sign In</h2><label style={{color:'#a3a3a3', fontSize:'0.9rem'}}>Email</label><input type="email" className="f-drk-i" placeholder="you@example.com" /><label style={{color:'#a3a3a3', fontSize:'0.9rem'}}>Password</label><input type="password" className="f-drk-i" placeholder="••••••••" /><button className="f-drk-b">Sign In</button></div>
+      <style>{`.auth-dark { background: #171717; padding: 40px; border-radius: 12px; border: 1px solid #333; width: 100%; max-width: 400px; color: white; } .form-group { margin-bottom: 20px; } .form-group label { display: block; color: #a3a3a3; font-size: 0.9rem; margin-bottom: 8px; cursor: pointer; } .form-group input { width: 100%; padding: 12px; border-radius: 6px; background: #262626; border: 1px solid #404040; color: white; box-sizing: border-box; outline: none; transition: border-color 0.2s; } .form-group input:focus-visible { border-color: #4f46e5; box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2); } .auth-btn { width: 100%; padding: 12px; background: #4f46e5; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; outline: none; } .auth-btn:focus-visible { box-shadow: 0 0 0 3px rgba(255,255,255,0.4); }`}</style>
+      <form className="auth-dark" onSubmit={(e)=>e.preventDefault()}>
+        <h2 style={{margin:'0 0 20px'}}>Sign In</h2>
+        <div className="form-group">
+          <label htmlFor="email-1">Email</label>
+          <input id="email-1" type="email" placeholder="you@example.com" required aria-required="true" />
+        </div>
+        <div className="form-group">
+          <label htmlFor="pass-1">Password</label>
+          <input id="pass-1" type="password" placeholder="••••••••" required aria-required="true" />
+        </div>
+        <button type="submit" className="auth-btn">Sign In</button>
+      </form>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -23,18 +34,30 @@ import TabItem from '@theme/TabItem';
 ```jsx
 export default function DarkLogin() {
   return (
-    <div className="auth-dark">
+    <form className="auth-dark" onSubmit={(e) => e.preventDefault()}>
       <h2>Sign In</h2>
       <div className="form-group">
-        <label>Email</label>
-        <input type="email" placeholder="you@example.com" />
+        <label htmlFor="email-login">Email</label>
+        <input 
+          id="email-login" 
+          type="email" 
+          placeholder="you@example.com" 
+          required 
+          aria-required="true"
+        />
       </div>
       <div className="form-group">
-        <label>Password</label>
-        <input type="password" placeholder="••••••••" />
+        <label htmlFor="password-login">Password</label>
+        <input 
+          id="password-login" 
+          type="password" 
+          placeholder="••••••••" 
+          required 
+          aria-required="true"
+        />
       </div>
-      <button className="auth-btn">Sign In</button>
-    </div>
+      <button type="submit" className="auth-btn">Sign In</button>
+    </form>
   );
 }
 ```
@@ -48,6 +71,7 @@ export default function DarkLogin() {
   width: 100%;
   max-width: 400px;
   color: white;
+  box-sizing: border-box;
 }
 .auth-dark h2 { margin: 0 0 20px; }
 .form-group { margin-bottom: 20px; }
@@ -56,6 +80,7 @@ export default function DarkLogin() {
   color: #a3a3a3;
   font-size: 0.9rem;
   margin-bottom: 8px;
+  cursor: pointer;
 }
 .form-group input {
   width: 100%;
@@ -65,8 +90,13 @@ export default function DarkLogin() {
   border: 1px solid #404040;
   color: white;
   box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
 }
-.form-group input:focus { outline: none; border-color: #4f46e5; }
+.form-group input:focus-visible { 
+  border-color: #4f46e5; 
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
 .auth-btn {
   width: 100%;
   padding: 12px;
@@ -76,7 +106,9 @@ export default function DarkLogin() {
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
 }
+.auth-btn:focus-visible { box-shadow: 0 0 0 3px rgba(255,255,255,0.4); }
 ```
 
   </TabItem>
@@ -86,8 +118,18 @@ export default function DarkLogin() {
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ fontFamily: 'system-ui, sans-serif', padding: '20px', background: '#f3f4f6', borderRadius: '12px', display: 'flex', justifyContent: 'center' }}>
-      <style>{`.f-lgt { background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); width: 100%; max-width: 400px; } .f-lgt-i { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 20px; box-sizing: border-box; background: #f9fafb; } .f-lgt-b { width: 100%; padding: 12px; background: #111; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }`}</style>
-      <div className="f-lgt"><h2 style={{margin:'0 0 5px'}}>Create Account</h2><p style={{color:'#666', margin:'0 0 20px'}}>Join 50,000+ developers.</p><input type="text" className="f-lgt-i" placeholder="Full Name" /><input type="email" className="f-lgt-i" placeholder="Email address" /><input type="password" className="f-lgt-i" placeholder="Password" /><button className="f-lgt-b">Create Account</button></div>
+      <style>{`.signup-card { background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); width: 100%; max-width: 400px; box-sizing: border-box; } .signup-input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 20px; box-sizing: border-box; background: #f9fafb; outline: none; } .signup-input:focus-visible { border-color: #111; box-shadow: 0 0 0 2px rgba(17,17,17,0.1); } .signup-btn { width: 100%; padding: 12px; background: #111; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; outline: none; } .signup-btn:focus-visible { box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4); }`}</style>
+      <form className="signup-card" onSubmit={(e)=>e.preventDefault()}>
+        <h2 style={{margin:'0 0 5px', color:'#111'}}>Create Account</h2>
+        <p style={{color:'#666', margin:'0 0 20px'}}>Join 50,000+ developers.</p>
+        <label htmlFor="name-2" className="sr-only" style={{display:'none'}}>Full Name</label>
+        <input id="name-2" type="text" className="signup-input" placeholder="Full Name" aria-label="Full Name" />
+        <label htmlFor="email-2" className="sr-only" style={{display:'none'}}>Email</label>
+        <input id="email-2" type="email" className="signup-input" placeholder="Email address" aria-label="Email address" />
+        <label htmlFor="pass-2" className="sr-only" style={{display:'none'}}>Password</label>
+        <input id="pass-2" type="password" className="signup-input" placeholder="Password" aria-label="Password" />
+        <button type="submit" className="signup-btn">Create Account</button>
+      </form>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -95,16 +137,22 @@ export default function DarkLogin() {
 ```jsx
 export default function LightSignup() {
   return (
-    <div className="signup-card">
+    <form className="signup-card" onSubmit={(e) => e.preventDefault()}>
       <h2>Create Account</h2>
       <p className="signup-sub">Join 50,000+ developers.</p>
       
-      <input type="text" className="signup-input" placeholder="Full Name" />
-      <input type="email" className="signup-input" placeholder="Email address" />
-      <input type="password" className="signup-input" placeholder="Password" />
+      {/* Visually hidden labels for screen readers */}
+      <label htmlFor="signup-name" className="sr-only">Full Name</label>
+      <input id="signup-name" type="text" className="signup-input" placeholder="Full Name" required />
       
-      <button className="signup-btn">Create Account</button>
-    </div>
+      <label htmlFor="signup-email" className="sr-only">Email address</label>
+      <input id="signup-email" type="email" className="signup-input" placeholder="Email address" required />
+      
+      <label htmlFor="signup-pass" className="sr-only">Password</label>
+      <input id="signup-pass" type="password" className="signup-input" placeholder="Password" required />
+      
+      <button type="submit" className="signup-btn">Create Account</button>
+    </form>
   );
 }
 ```
@@ -117,9 +165,14 @@ export default function LightSignup() {
   box-shadow: 0 10px 25px rgba(0,0,0,0.05);
   width: 100%;
   max-width: 400px;
+  box-sizing: border-box;
 }
 .signup-card h2 { margin: 0 0 5px; color: #111; }
 .signup-sub { color: #666; margin: 0 0 20px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+}
 .signup-input {
   width: 100%;
   padding: 12px;
@@ -128,8 +181,12 @@ export default function LightSignup() {
   margin-bottom: 20px;
   box-sizing: border-box;
   background: #f9fafb;
+  outline: none;
 }
-.signup-input:focus { outline: none; border-color: #111; }
+.signup-input:focus-visible { 
+  border-color: #111; 
+  box-shadow: 0 0 0 2px rgba(17,17,17,0.1);
+}
 .signup-btn {
   width: 100%;
   padding: 12px;
@@ -139,7 +196,9 @@ export default function LightSignup() {
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
 }
+.signup-btn:focus-visible { box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4); }
 ```
 
   </TabItem>
@@ -149,8 +208,12 @@ export default function LightSignup() {
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
-      <style>{`.f-nl { display: flex; gap: 10px; max-width: 500px; } .f-nl-i { flex: 1; padding: 12px 20px; border: 1px solid #d1d5db; border-radius: 30px; outline: none; } .f-nl-b { padding: 12px 25px; background: #4f46e5; color: white; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; }`}</style>
-      <div className="f-nl"><input type="email" className="f-nl-i" placeholder="Enter your email..." /><button className="f-nl-b">Subscribe</button></div>
+      <style>{`.news-inline { display: flex; gap: 10px; max-width: 500px; } .news-input { flex: 1; padding: 12px 20px; border: 1px solid #d1d5db; border-radius: 30px; outline: none; } .news-input:focus-visible { border-color: #4f46e5; box-shadow: 0 0 0 2px rgba(79,70,229,0.2); } .news-btn { padding: 12px 25px; background: #4f46e5; color: white; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; outline: none; } .news-btn:focus-visible { box-shadow: 0 0 0 3px rgba(17,17,17,0.3); } @media (max-width: 500px) { .news-inline { flex-direction: column; } }`}</style>
+      <form className="news-inline" onSubmit={(e)=>e.preventDefault()}>
+        <label htmlFor="nl-email" className="sr-only" style={{display:'none'}}>Newsletter Email</label>
+        <input id="nl-email" type="email" className="news-input" placeholder="Enter your email..." aria-label="Newsletter Email" />
+        <button type="submit" className="news-btn">Subscribe</button>
+      </form>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -158,10 +221,17 @@ export default function LightSignup() {
 ```jsx
 export default function NewsletterInline() {
   return (
-    <div className="news-inline">
-      <input type="email" className="news-input" placeholder="Enter your email..." />
-      <button className="news-btn">Subscribe</button>
-    </div>
+    <form className="news-inline" onSubmit={(e) => e.preventDefault()}>
+      <label htmlFor="newsletter-email" className="sr-only">Newsletter Email</label>
+      <input 
+        id="newsletter-email" 
+        type="email" 
+        className="news-input" 
+        placeholder="Enter your email..." 
+        required 
+      />
+      <button type="submit" className="news-btn">Subscribe</button>
+    </form>
   );
 }
 ```
@@ -172,6 +242,10 @@ export default function NewsletterInline() {
   gap: 10px;
   max-width: 500px;
 }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+}
 .news-input {
   flex: 1;
   padding: 12px 20px;
@@ -179,7 +253,10 @@ export default function NewsletterInline() {
   border-radius: 30px;
   outline: none;
 }
-.news-input:focus { border-color: #4f46e5; }
+.news-input:focus-visible { 
+  border-color: #4f46e5; 
+  box-shadow: 0 0 0 2px rgba(79,70,229,0.2);
+}
 .news-btn {
   padding: 12px 25px;
   background: #4f46e5;
@@ -188,7 +265,10 @@ export default function NewsletterInline() {
   border-radius: 30px;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
 }
+.news-btn:focus-visible { box-shadow: 0 0 0 3px rgba(17,17,17,0.3); }
+
 @media (max-width: 500px) {
   .news-inline { flex-direction: column; }
 }
@@ -201,8 +281,17 @@ export default function NewsletterInline() {
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
-      <style>{`.f-cont { background: white; padding: 30px; border: 1px solid #eee; border-radius: 12px; max-width: 500px; } .f-cont-i, .f-cont-ta { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px; box-sizing: border-box; } .f-cont-ta { height: 120px; resize: none; }`}</style>
-      <div className="f-cont"><h3 style={{margin:'0 0 20px'}}>Send us a message</h3><div style={{display:'flex', gap:'15px'}}><input type="text" className="f-cont-i" placeholder="First Name" /><input type="text" className="f-cont-i" placeholder="Last Name" /></div><input type="email" className="f-cont-i" placeholder="Email" /><textarea className="f-cont-ta" placeholder="How can we help?"></textarea><button style={{padding:'12px 24px', background:'#111', color:'white', border:'none', borderRadius:'6px', fontWeight:'bold', cursor:'pointer'}}>Send Message</button></div>
+      <style>{`.contact-card { background: white; padding: 30px; border: 1px solid #eee; border-radius: 12px; max-width: 500px; box-sizing: border-box; } .contact-row { display: flex; gap: 15px; } .contact-input, .contact-textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px; box-sizing: border-box; outline: none; } .contact-input:focus-visible, .contact-textarea:focus-visible { border-color: #111; box-shadow: 0 0 0 2px rgba(17,17,17,0.1); } .contact-textarea { height: 120px; resize: vertical; } .contact-btn { padding: 12px 24px; background: #111; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; outline: none; } .contact-btn:focus-visible { box-shadow: 0 0 0 3px rgba(79,70,229,0.4); } @media (max-width: 500px) { .contact-row { flex-direction: column; gap: 0; } }`}</style>
+      <form className="contact-card" onSubmit={(e)=>e.preventDefault()}>
+        <h3 style={{margin:'0 0 20px'}}>Send us a message</h3>
+        <div className="contact-row">
+          <input type="text" aria-label="First Name" className="contact-input" placeholder="First Name" />
+          <input type="text" aria-label="Last Name" className="contact-input" placeholder="Last Name" />
+        </div>
+        <input type="email" aria-label="Email" className="contact-input" placeholder="Email" />
+        <textarea aria-label="Message" className="contact-textarea" placeholder="How can we help?"></textarea>
+        <button type="submit" className="contact-btn">Send Message</button>
+      </form>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -210,16 +299,27 @@ export default function NewsletterInline() {
 ```jsx
 export default function ContactForm() {
   return (
-    <div className="contact-card">
+    <form className="contact-card" onSubmit={(e) => e.preventDefault()}>
       <h3>Send us a message</h3>
       <div className="contact-row">
-        <input type="text" className="contact-input" placeholder="First Name" />
-        <input type="text" className="contact-input" placeholder="Last Name" />
+        <div>
+          <label htmlFor="contact-fname" className="sr-only">First Name</label>
+          <input id="contact-fname" type="text" className="contact-input" placeholder="First Name" required />
+        </div>
+        <div>
+          <label htmlFor="contact-lname" className="sr-only">Last Name</label>
+          <input id="contact-lname" type="text" className="contact-input" placeholder="Last Name" required />
+        </div>
       </div>
-      <input type="email" className="contact-input" placeholder="Email" />
-      <textarea className="contact-textarea" placeholder="How can we help?"></textarea>
-      <button className="contact-btn">Send Message</button>
-    </div>
+      
+      <label htmlFor="contact-email" className="sr-only">Email</label>
+      <input id="contact-email" type="email" className="contact-input" placeholder="Email" required />
+      
+      <label htmlFor="contact-msg" className="sr-only">Message</label>
+      <textarea id="contact-msg" className="contact-textarea" placeholder="How can we help?" required></textarea>
+      
+      <button type="submit" className="contact-btn">Send Message</button>
+    </form>
   );
 }
 ```
@@ -231,12 +331,18 @@ export default function ContactForm() {
   border: 1px solid #eee;
   border-radius: 12px;
   max-width: 500px;
+  box-sizing: border-box;
 }
 .contact-card h3 { margin: 0 0 20px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+}
 .contact-row {
   display: flex;
   gap: 15px;
 }
+.contact-row > div { flex: 1; }
 .contact-input, .contact-textarea {
   width: 100%;
   padding: 12px;
@@ -244,10 +350,15 @@ export default function ContactForm() {
   border-radius: 6px;
   margin-bottom: 15px;
   box-sizing: border-box;
+  outline: none;
+}
+.contact-input:focus-visible, .contact-textarea:focus-visible { 
+  border-color: #111; 
+  box-shadow: 0 0 0 2px rgba(17,17,17,0.1);
 }
 .contact-textarea {
   height: 120px;
-  resize: none;
+  resize: vertical; /* Allow only vertical resize for forms */
 }
 .contact-btn {
   padding: 12px 24px;
@@ -257,7 +368,10 @@ export default function ContactForm() {
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
 }
+.contact-btn:focus-visible { box-shadow: 0 0 0 3px rgba(79,70,229,0.4); }
+
 @media (max-width: 500px) {
   .contact-row { flex-direction: column; gap: 0; }
 }
@@ -270,8 +384,15 @@ export default function ContactForm() {
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
-      <style>{`.f-reset { max-width: 400px; padding: 40px; text-align: center; border: 1px solid #eee; border-radius: 16px; background: white; } .f-reset-i { width: 100%; padding: 12px; text-align: center; border: 1px solid #ddd; border-radius: 8px; margin: 20px 0; font-size: 1.1rem; box-sizing: border-box; }`}</style>
-      <div className="f-reset"><h2 style={{margin:'0 0 10px'}}>Forgot Password?</h2><p style={{color:'#666', margin:0}}>Enter your email and we'll send you a recovery link.</p><input type="email" className="f-reset-i" placeholder="hello@example.com" /><button style={{width:'100%', padding:'12px', background:'#4f46e5', color:'white', border:'none', borderRadius:'8px', fontWeight:'bold', cursor:'pointer'}}>Send Link</button><p style={{marginTop:'20px', fontSize:'0.9rem'}}><a href="#" style={{color:'#4f46e5', textDecoration:'none'}}>Back to Login</a></p></div>
+      <style>{`.reset-card { max-width: 400px; padding: 40px; text-align: center; border: 1px solid #eee; border-radius: 16px; background: white; box-sizing: border-box; width: 100%; } .reset-input { width: 100%; padding: 12px; text-align: center; border: 1px solid #ddd; border-radius: 8px; margin: 20px 0; font-size: 1.1rem; box-sizing: border-box; outline: none; } .reset-input:focus-visible { border-color: #4f46e5; box-shadow: 0 0 0 2px rgba(79,70,229,0.2); } .reset-btn { width: 100%; padding: 12px; background: #4f46e5; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; outline: none; } .reset-btn:focus-visible { box-shadow: 0 0 0 3px rgba(17,17,17,0.3); }`}</style>
+      <form className="reset-card" onSubmit={(e)=>e.preventDefault()}>
+        <h2 style={{margin:'0 0 10px'}}>Forgot Password?</h2>
+        <p style={{color:'#666', margin:0}}>Enter your email and we'll send you a recovery link.</p>
+        <label htmlFor="reset-email" className="sr-only" style={{display:'none'}}>Account Email</label>
+        <input id="reset-email" type="email" className="reset-input" placeholder="hello@example.com" aria-label="Account Email" />
+        <button type="submit" className="reset-btn">Send Link</button>
+        <p style={{marginTop:'20px', fontSize:'0.9rem'}}><a href="#" style={{color:'#4f46e5', textDecoration:'none', outline:'none'}}>Back to Login</a></p>
+      </form>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -279,15 +400,22 @@ export default function ContactForm() {
 ```jsx
 export default function PasswordReset() {
   return (
-    <div className="reset-card">
+    <form className="reset-card" onSubmit={(e) => e.preventDefault()}>
       <h2>Forgot Password?</h2>
       <p className="reset-text">Enter your email and we'll send you a recovery link.</p>
       
-      <input type="email" className="reset-input" placeholder="hello@example.com" />
-      <button className="reset-btn">Send Link</button>
+      <label htmlFor="reset-email" className="sr-only">Account Email</label>
+      <input 
+        id="reset-email" 
+        type="email" 
+        className="reset-input" 
+        placeholder="hello@example.com" 
+        required
+      />
+      <button type="submit" className="reset-btn">Send Link</button>
       
       <p className="reset-back"><a href="#">Back to Login</a></p>
-    </div>
+    </form>
   );
 }
 ```
@@ -295,14 +423,20 @@ export default function PasswordReset() {
 ```css
 .reset-card {
   max-width: 400px;
+  width: 100%;
   padding: 40px;
   text-align: center;
   border: 1px solid #eee;
   border-radius: 16px;
   background: white;
+  box-sizing: border-box;
 }
 .reset-card h2 { margin: 0 0 10px; }
 .reset-text { color: #666; margin: 0; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+}
 .reset-input {
   width: 100%;
   padding: 12px;
@@ -312,6 +446,11 @@ export default function PasswordReset() {
   margin: 20px 0;
   font-size: 1.1rem;
   box-sizing: border-box;
+  outline: none;
+}
+.reset-input:focus-visible { 
+  border-color: #4f46e5; 
+  box-shadow: 0 0 0 2px rgba(79,70,229,0.2);
 }
 .reset-btn {
   width: 100%;
@@ -322,9 +461,18 @@ export default function PasswordReset() {
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
 }
+.reset-btn:focus-visible { box-shadow: 0 0 0 3px rgba(17,17,17,0.3); }
 .reset-back { margin-top: 20px; font-size: 0.9rem; }
-.reset-back a { color: #4f46e5; text-decoration: none; font-weight: 500; }
+.reset-back a { 
+  color: #4f46e5; 
+  text-decoration: none; 
+  font-weight: 500;
+  outline: none;
+  border-radius: 2px;
+}
+.reset-back a:focus-visible { box-shadow: 0 0 0 2px rgba(17,17,17,0.3); }
 ```
 
   </TabItem>

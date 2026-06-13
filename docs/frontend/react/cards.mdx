@@ -8,14 +8,14 @@ import TabItem from '@theme/TabItem';
 
 # Card Components
 
-5 generic card layouts for any application.
+Enterprise-grade card components using `<article>` wrappers, mobile responsiveness, and clean interactive states.
 
 ## 1. Profile Card
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ padding: '20px' }}>
-      <style>{`.c-prof { background: white; border-radius: 12px; border: 1px solid #eee; width: 250px; text-align: center; overflow: hidden; } .c-prof-h { height: 80px; background: #4f46e5; } .c-prof-a { width: 60px; height: 60px; background: #ccc; border-radius: 50%; margin: -30px auto 10px; border: 4px solid white; } .c-prof-i { padding: 10px 20px 20px; }`}</style>
-      <div className="c-prof"><div className="c-prof-h"></div><div className="c-prof-a"></div><div className="c-prof-i"><h3>Alex Johnson</h3><p style={{color:'#666'}}>Developer</p></div></div>
+      <style>{`.profile-card { background: white; border-radius: 12px; border: 1px solid #eee; width: 100%; max-width: 250px; text-align: center; overflow: hidden; } .profile-header { height: 80px; background: #4f46e5; } .profile-avatar { width: 60px; height: 60px; background: #ccc; border-radius: 50%; margin: -30px auto 10px; border: 4px solid white; display: block; } .profile-info { padding: 10px 20px 20px; } .profile-info p { color: #666; margin: 0; }`}</style>
+      <article className="profile-card"><header className="profile-header"></header><div className="profile-avatar" role="img" aria-label="User Avatar"></div><div className="profile-info"><h3>Alex Johnson</h3><p>Developer</p></div></article>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -23,14 +23,14 @@ import TabItem from '@theme/TabItem';
 ```jsx
 export default function ProfileCard() {
   return (
-    <div className="profile-card">
-      <div className="profile-header"></div>
-      <div className="profile-avatar"></div>
+    <article className="profile-card">
+      <header className="profile-header"></header>
+      <div className="profile-avatar" role="img" aria-label="Alex Johnson's Avatar"></div>
       <div className="profile-info">
         <h3>Alex Johnson</h3>
         <p>Developer</p>
       </div>
-    </div>
+    </article>
   );
 }
 ```
@@ -40,7 +40,8 @@ export default function ProfileCard() {
   background: white;
   border-radius: 12px;
   border: 1px solid #eee;
-  width: 250px;
+  width: 100%; /* Responsive width */
+  max-width: 250px;
   text-align: center;
   overflow: hidden;
 }
@@ -55,13 +56,10 @@ export default function ProfileCard() {
   border-radius: 50%;
   margin: -30px auto 10px;
   border: 4px solid white;
+  display: block;
 }
-.profile-info {
-  padding: 10px 20px 20px;
-}
-.profile-info p {
-  color: #666;
-}
+.profile-info { padding: 10px 20px 20px; }
+.profile-info p { color: #666; margin: 0; }
 ```
 
   </TabItem>
@@ -71,8 +69,8 @@ export default function ProfileCard() {
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ padding: '20px' }}>
-      <style>{`.c-prod { background: white; border-radius: 12px; border: 1px solid #eee; width: 250px; overflow: hidden; } .c-prod-img { height: 150px; background: #f3f4f6; } .c-prod-i { padding: 15px; } .c-prod-btn { width: 100%; padding: 10px; background: #111; color: white; border: none; border-radius: 6px; cursor: pointer; }`}</style>
-      <div className="c-prod"><div className="c-prod-img"></div><div className="c-prod-i"><h4>Running Shoes</h4><p style={{color:'#4f46e5', fontWeight:'bold'}}>$129</p><button className="c-prod-btn">Add to Cart</button></div></div>
+      <style>{`.product-card { background: white; border-radius: 12px; border: 1px solid #eee; width: 100%; max-width: 250px; overflow: hidden; transition: box-shadow 0.2s; } .product-card:hover, .product-card:focus-within { box-shadow: 0 10px 15px rgba(0,0,0,0.1); } .product-img { height: 150px; background: #f3f4f6; display: block; } .product-info { padding: 15px; } .product-price { color: #4f46e5; font-weight: bold; margin: 0 0 10px; } .product-btn { width: 100%; padding: 10px; background: #111; color: white; border: none; border-radius: 6px; cursor: pointer; outline: none; } .product-btn:focus-visible { box-shadow: 0 0 0 3px rgba(17,17,17,0.4); }`}</style>
+      <article className="product-card"><div className="product-img" role="img" aria-label="Running Shoes"></div><div className="product-info"><h4 style={{margin:'0 0 5px'}}>Running Shoes</h4><p className="product-price">$129</p><button type="button" className="product-btn">Add to Cart</button></div></article>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -80,14 +78,15 @@ export default function ProfileCard() {
 ```jsx
 export default function ProductCard() {
   return (
-    <div className="product-card">
-      <div className="product-img"></div>
+    <article className="product-card">
+      {/* Use actual <img alt="..."> in production */}
+      <div className="product-img" role="img" aria-label="Running Shoes image"></div>
       <div className="product-info">
         <h4>Running Shoes</h4>
         <p className="product-price">$129</p>
-        <button className="product-btn">Add to Cart</button>
+        <button type="button" className="product-btn">Add to Cart</button>
       </div>
-    </div>
+    </article>
   );
 }
 ```
@@ -97,20 +96,22 @@ export default function ProductCard() {
   background: white;
   border-radius: 12px;
   border: 1px solid #eee;
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
   overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.product-card:hover, .product-card:focus-within {
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
 }
 .product-img {
   height: 150px;
   background: #f3f4f6;
+  display: block;
 }
-.product-info {
-  padding: 15px;
-}
-.product-price {
-  color: #4f46e5;
-  font-weight: bold;
-}
+.product-info { padding: 15px; }
+.product-info h4 { margin: 0 0 5px; }
+.product-price { color: #4f46e5; font-weight: bold; margin: 0 0 10px; }
 .product-btn {
   width: 100%;
   padding: 10px;
@@ -119,6 +120,10 @@ export default function ProductCard() {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  outline: none;
+}
+.product-btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(17,17,17,0.4);
 }
 ```
 
@@ -129,8 +134,8 @@ export default function ProductCard() {
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ padding: '20px' }}>
-      <style>{`.c-blog { background: white; border-radius: 12px; border: 1px solid #eee; width: 300px; overflow: hidden; } .c-blog-img { height: 160px; background: #e5e7eb; } .c-blog-i { padding: 20px; } .c-blog-tag { color: #4f46e5; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }`}</style>
-      <div className="c-blog"><div className="c-blog-img"></div><div className="c-blog-i"><span className="c-blog-tag">Technology</span><h3 style={{margin:'10px 0'}}>The Future of React</h3><p style={{color:'#666', fontSize:'0.9rem'}}>Discover how server components are changing the game...</p></div></div>
+      <style>{`.blog-card { background: white; border-radius: 12px; border: 1px solid #eee; width: 100%; max-width: 300px; overflow: hidden; transition: transform 0.2s; } .blog-card:hover { transform: translateY(-4px); } .blog-img { height: 160px; background: #e5e7eb; } .blog-info { padding: 20px; } .blog-tag { color: #4f46e5; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; } .blog-info h3 { margin: 10px 0; } .blog-info p { color: #666; font-size: 0.9rem; }`}</style>
+      <article className="blog-card"><div className="blog-img" role="img" aria-label="Blog post thumbnail"></div><div className="blog-info"><span className="blog-tag">Technology</span><h3>The Future of React</h3><p>Discover how server components are changing the game...</p></div></article>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -138,14 +143,14 @@ export default function ProductCard() {
 ```jsx
 export default function BlogCard() {
   return (
-    <div className="blog-card">
-      <div className="blog-img"></div>
+    <article className="blog-card">
+      <div className="blog-img" role="img" aria-label="Blog thumbnail"></div>
       <div className="blog-info">
         <span className="blog-tag">Technology</span>
         <h3>The Future of React</h3>
         <p>Discover how server components are changing the game...</p>
       </div>
-    </div>
+    </article>
   );
 }
 ```
@@ -155,23 +160,26 @@ export default function BlogCard() {
   background: white;
   border-radius: 12px;
   border: 1px solid #eee;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   overflow: hidden;
+  transition: transform 0.2s;
+}
+.blog-card:hover {
+  transform: translateY(-4px);
 }
 .blog-img {
   height: 160px;
   background: #e5e7eb;
 }
-.blog-info {
-  padding: 20px;
-}
+.blog-info { padding: 20px; }
 .blog-tag {
   color: #4f46e5;
   font-size: 0.8rem;
   font-weight: bold;
   text-transform: uppercase;
 }
-.blog-info h3 { margin: 10px 0; }
+.blog-info h3 { margin: 10px 0; color: #111; }
 .blog-info p { color: #666; font-size: 0.9rem; }
 ```
 
@@ -182,8 +190,8 @@ export default function BlogCard() {
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ padding: '20px' }}>
-      <style>{`.c-test { background: white; border-radius: 12px; border: 1px solid #eee; width: 300px; padding: 25px; } .c-test-q { font-style: italic; color: #444; margin-bottom: 20px; } .c-test-user { display: flex; align-items: center; gap: 15px; } .c-test-av { width: 40px; height: 40px; border-radius: 50%; background: #ccc; }`}</style>
-      <div className="c-test"><p className="c-test-q">"This library literally saved me 100 hours of development time. Highly recommended!"</p><div className="c-test-user"><div className="c-test-av"></div><div><strong style={{display:'block'}}>Sarah Connor</strong><span style={{color:'#666', fontSize:'0.8rem'}}>CEO, TechCorp</span></div></div></div>
+      <style>{`.testimonial-card { background: white; border-radius: 12px; border: 1px solid #eee; width: 100%; max-width: 300px; padding: 25px; } .testimonial-quote { font-style: italic; color: #444; margin-bottom: 20px; } .testimonial-user { display: flex; align-items: center; gap: 15px; } .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: #ccc; }`}</style>
+      <figure className="testimonial-card"><blockquote className="testimonial-quote">"This library literally saved me 100 hours of development time. Highly recommended!"</blockquote><figcaption className="testimonial-user"><div className="testimonial-avatar" role="img" aria-label="Sarah Connor"></div><div><strong style={{display:'block'}}>Sarah Connor</strong><span style={{color:'#666', fontSize:'0.8rem'}}>CEO, TechCorp</span></div></figcaption></figure>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -191,16 +199,19 @@ export default function BlogCard() {
 ```jsx
 export default function TestimonialCard() {
   return (
-    <div className="testimonial-card">
-      <p className="testimonial-quote">"This library literally saved me 100 hours of development time. Highly recommended!"</p>
-      <div className="testimonial-user">
-        <div className="testimonial-avatar"></div>
+    {/* Using <figure> and <blockquote> for strict semantic markup */}
+    <figure className="testimonial-card">
+      <blockquote className="testimonial-quote">
+        "This library literally saved me 100 hours of development time. Highly recommended!"
+      </blockquote>
+      <figcaption className="testimonial-user">
+        <div className="testimonial-avatar" role="img" aria-label="Sarah Connor's Avatar"></div>
         <div>
           <strong>Sarah Connor</strong>
           <span>CEO, TechCorp</span>
         </div>
-      </div>
-    </div>
+      </figcaption>
+    </figure>
   );
 }
 ```
@@ -210,13 +221,15 @@ export default function TestimonialCard() {
   background: white;
   border-radius: 12px;
   border: 1px solid #eee;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   padding: 25px;
+  margin: 0; /* Remove default figure margin */
 }
 .testimonial-quote {
   font-style: italic;
   color: #444;
-  margin-bottom: 20px;
+  margin: 0 0 20px 0;
 }
 .testimonial-user {
   display: flex;
@@ -229,7 +242,7 @@ export default function TestimonialCard() {
   border-radius: 50%;
   background: #ccc;
 }
-.testimonial-user strong { display: block; }
+.testimonial-user strong { display: block; color: #111; }
 .testimonial-user span { color: #666; font-size: 0.8rem; }
 ```
 
@@ -240,8 +253,8 @@ export default function TestimonialCard() {
 <Tabs>
   <TabItem value="preview" label="Preview" default>
     <div style={{ padding: '20px' }}>
-      <style>{`.c-price { background: #111; color: white; border-radius: 16px; width: 280px; padding: 30px; text-align: center; } .c-price-num { font-size: 3rem; font-weight: bold; color: #4f46e5; margin: 15px 0; } .c-price-feat { list-style: none; padding: 0; margin: 20px 0; text-align: left; color: #ccc; } .c-price-feat li { margin-bottom: 10px; }`}</style>
-      <div className="c-price"><h3>Pro Plan</h3><div className="c-price-num">$29<span style={{fontSize:'1rem',color:'#666'}}>/mo</span></div><ul className="c-price-feat"><li>✓ Unlimited Projects</li><li>✓ 24/7 Support</li><li>✓ Analytics API</li></ul><button style={{width:'100%', padding:'12px', background:'#4f46e5', color:'white', border:'none', borderRadius:'8px', fontWeight:'bold', cursor:'pointer'}}>Subscribe</button></div>
+      <style>{`.pricing-card { background: #111; color: white; border-radius: 16px; width: 100%; max-width: 280px; padding: 30px; text-align: center; } .pricing-number { font-size: 3rem; font-weight: bold; color: #4f46e5; margin: 15px 0; } .pricing-number span { font-size: 1rem; color: #ccc; } .pricing-features { list-style: none; padding: 0; margin: 20px 0; text-align: left; color: #ccc; } .pricing-features li { margin-bottom: 10px; } .pricing-btn { width: 100%; padding: 12px; background: #4f46e5; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; outline: none; } .pricing-btn:focus-visible { outline: 3px solid white; outline-offset: 2px; }`}</style>
+      <section className="pricing-card"><h3>Pro Plan</h3><div className="pricing-number">$29<span>/mo</span></div><ul className="pricing-features"><li>✓ Unlimited Projects</li><li>✓ 24/7 Support</li><li>✓ Analytics API</li></ul><button type="button" className="pricing-btn">Subscribe</button></section>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -249,16 +262,16 @@ export default function TestimonialCard() {
 ```jsx
 export default function PricingCard() {
   return (
-    <div className="pricing-card">
+    <section className="pricing-card" aria-label="Pro Pricing Tier">
       <h3>Pro Plan</h3>
       <div className="pricing-number">$29<span>/mo</span></div>
-      <ul className="pricing-features">
+      <ul className="pricing-features" aria-label="Pro Plan Features">
         <li>✓ Unlimited Projects</li>
         <li>✓ 24/7 Support</li>
         <li>✓ Analytics API</li>
       </ul>
-      <button className="pricing-btn">Subscribe</button>
-    </div>
+      <button type="button" className="pricing-btn">Subscribe</button>
+    </section>
   );
 }
 ```
@@ -268,7 +281,8 @@ export default function PricingCard() {
   background: #111;
   color: white;
   border-radius: 16px;
-  width: 280px;
+  width: 100%;
+  max-width: 280px;
   padding: 30px;
   text-align: center;
 }
@@ -280,7 +294,7 @@ export default function PricingCard() {
 }
 .pricing-number span {
   font-size: 1rem;
-  color: #666;
+  color: #ccc;
 }
 .pricing-features {
   list-style: none;
@@ -299,6 +313,11 @@ export default function PricingCard() {
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
+}
+.pricing-btn:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 2px;
 }
 ```
 

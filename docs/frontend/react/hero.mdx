@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # Hero Sections
 
-5 distinct hero sections to make an impact on your landing pages.
+Enterprise-grade hero sections using semantic `<section>` tags, strict heading hierarchy (`<h1>`), and mobile responsiveness.
 
 ## 1. Modern Gradient Hero
 <Tabs>
@@ -16,13 +16,18 @@ import TabItem from '@theme/TabItem';
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
       <style>
         {`
-          .h-grad { padding: 80px 20px; text-align: center; background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); border-radius: 16px; }
-          .h-grad-t { font-size: 3rem; font-weight: 800; margin: 0 0 20px; background: linear-gradient(to right, #4f46e5, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-          .h-grad-s { font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto 30px; }
-          .h-grad-b { background: #111; color: white; padding: 15px 30px; border-radius: 30px; border: none; font-weight: bold; cursor: pointer; }
+          .hero-gradient { padding: 80px 20px; text-align: center; background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); border-radius: 16px; }
+          .hero-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin: 0 0 20px; background: linear-gradient(to right, #4f46e5, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+          .hero-subtitle { font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto 30px; }
+          .hero-btn { background: #111; color: white; padding: 15px 30px; border-radius: 30px; border: none; font-weight: bold; cursor: pointer; outline: none; }
+          .hero-btn:focus-visible { box-shadow: 0 0 0 3px rgba(17,17,17,0.4); }
         `}
       </style>
-      <div className="h-grad"><h1 className="h-grad-t">Build Faster.</h1><p className="h-grad-s">Stop rewriting the same generic UI components over and over. Copy, paste, and launch your next big idea today.</p><button className="h-grad-b">Get Started</button></div>
+      <section className="hero-gradient" aria-labelledby="hero-title-1">
+        <h1 id="hero-title-1" className="hero-title">Build Faster.</h1>
+        <p className="hero-subtitle">Stop rewriting the same generic UI components over and over. Copy, paste, and launch your next big idea today.</p>
+        <button type="button" className="hero-btn">Get Started</button>
+      </section>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -30,11 +35,11 @@ import TabItem from '@theme/TabItem';
 ```jsx
 export default function GradientHero() {
   return (
-    <div className="hero-gradient">
-      <h1 className="hero-title">Build Faster.</h1>
+    <section className="hero-gradient" aria-labelledby="hero-title-1">
+      <h1 id="hero-title-1" className="hero-title">Build Faster.</h1>
       <p className="hero-subtitle">Stop rewriting the same generic UI components over and over. Copy, paste, and launch your next big idea today.</p>
-      <button className="hero-btn">Get Started</button>
-    </div>
+      <button type="button" className="hero-btn">Get Started</button>
+    </section>
   );
 }
 ```
@@ -47,7 +52,8 @@ export default function GradientHero() {
   border-radius: 16px;
 }
 .hero-title {
-  font-size: 3rem;
+  /* clamp() automatically scales font size for mobile */
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 800;
   margin: 0 0 20px;
   background: linear-gradient(to right, #4f46e5, #ec4899);
@@ -68,6 +74,10 @@ export default function GradientHero() {
   border: none;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
+}
+.hero-btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(17,17,17,0.4);
 }
 ```
 
@@ -80,17 +90,26 @@ export default function GradientHero() {
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
       <style>
         {`
-          .h-splt { display: flex; align-items: center; background: white; border-radius: 16px; border: 1px solid #eee; overflow: hidden; }
-          .h-splt-c { flex: 1; padding: 40px; }
-          .h-splt-i { flex: 1; background: #e5e7eb; height: 300px; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 2rem; }
-          .h-splt-t { font-size: 2.5rem; font-weight: bold; color: #111; margin: 0 0 15px; line-height: 1.2; }
-          .h-splt-b { background: #4f46e5; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+          .hero-split { display: flex; align-items: center; background: white; border-radius: 16px; border: 1px solid #eee; overflow: hidden; }
+          .hero-content { flex: 1; padding: 40px; }
+          .hero-title-split { font-size: clamp(2rem, 4vw, 2.5rem); font-weight: bold; color: #111; margin: 0 0 15px; line-height: 1.2; }
+          .hero-text { color: #666; margin-bottom: 20px; }
+          .hero-btn-split { background: #4f46e5; color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; outline: none; }
+          .hero-btn-split:focus-visible { box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4); }
+          .hero-image { flex: 1; background: #e5e7eb; height: 300px; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 2rem; }
+          @media (max-width: 768px) { .hero-split { flex-direction: column; } .hero-image { width: 100%; height: 200px; } .hero-content { padding: 20px; text-align: center; } }
         `}
       </style>
-      <div className="h-splt">
-        <div className="h-splt-c"><h1 className="h-splt-t">The ultimate workspace.</h1><p style={{color:'#666', marginBottom:'20px'}}>Organize your entire life with our beautiful, intuitive platform.</p><button className="h-splt-b">Download App</button></div>
-        <div className="h-splt-i">Product Image</div>
-      </div>
+      <section className="hero-split">
+        <div className="hero-content">
+          <h1 className="hero-title-split">The ultimate workspace.</h1>
+          <p className="hero-text">Organize your entire life with our beautiful, intuitive platform.</p>
+          <button type="button" className="hero-btn-split">Download App</button>
+        </div>
+        <div className="hero-image" role="img" aria-label="Product Showcase Screenshot">
+          Product Image
+        </div>
+      </section>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -98,16 +117,16 @@ export default function GradientHero() {
 ```jsx
 export default function SplitHero() {
   return (
-    <div className="hero-split">
+    <section className="hero-split">
       <div className="hero-content">
-        <h1 className="hero-title">The ultimate workspace.</h1>
+        <h1 className="hero-title-split">The ultimate workspace.</h1>
         <p className="hero-text">Organize your entire life with our beautiful, intuitive platform.</p>
-        <button className="hero-btn">Download App</button>
+        <button type="button" className="hero-btn-split">Download App</button>
       </div>
-      <div className="hero-image">
+      <div className="hero-image" role="img" aria-label="Product Showcase Screenshot">
         Product Image
       </div>
-    </div>
+    </section>
   );
 }
 ```
@@ -125,15 +144,15 @@ export default function SplitHero() {
   flex: 1;
   padding: 40px;
 }
-.hero-title {
-  font-size: 2.5rem;
+.hero-title-split {
+  font-size: clamp(2rem, 4vw, 2.5rem);
   font-weight: bold;
   color: #111;
   margin: 0 0 15px;
   line-height: 1.2;
 }
 .hero-text { color: #666; margin-bottom: 20px; }
-.hero-btn {
+.hero-btn-split {
   background: #4f46e5;
   color: white;
   padding: 12px 24px;
@@ -141,7 +160,9 @@ export default function SplitHero() {
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
 }
+.hero-btn-split:focus-visible { box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4); }
 .hero-image {
   flex: 1;
   background: #e5e7eb;
@@ -155,6 +176,7 @@ export default function SplitHero() {
 @media (max-width: 768px) {
   .hero-split { flex-direction: column; }
   .hero-image { width: 100%; height: 200px; }
+  .hero-content { padding: 20px; text-align: center; }
 }
 ```
 
@@ -167,13 +189,18 @@ export default function SplitHero() {
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
       <style>
         {`
-          .h-min { padding: 100px 20px; text-align: center; background: white; }
-          .h-min-t { font-size: 4rem; font-weight: 900; letter-spacing: -2px; color: #000; margin: 0 0 20px; line-height: 1; }
-          .h-min-b { background: transparent; color: #000; border: 2px solid #000; padding: 15px 40px; font-weight: bold; font-size: 1.2rem; cursor: pointer; transition: 0.2s; }
-          .h-min-b:hover { background: #000; color: white; }
+          .hero-minimal { padding: 100px 20px; text-align: center; background: white; }
+          .hero-min-title { font-size: clamp(3rem, 8vw, 4rem); font-weight: 900; letter-spacing: -2px; color: #000; margin: 0 0 20px; line-height: 1; }
+          .hero-min-btn { background: transparent; color: #000; border: 2px solid #000; padding: 15px 40px; font-weight: bold; font-size: 1.2rem; cursor: pointer; transition: all 0.2s; outline: none; }
+          .hero-min-btn:hover { background: #000; color: white; }
+          .hero-min-btn:focus-visible { outline: 3px solid #000; outline-offset: 4px; }
         `}
       </style>
-      <div className="h-min"><h1 className="h-min-t">Less, but better.</h1><p style={{fontSize:'1.5rem', color:'#888', marginBottom:'40px'}}>Design that gets out of your way.</p><button className="h-min-b">See Portfolio</button></div>
+      <section className="hero-minimal">
+        <h1 className="hero-min-title">Less, but better.</h1>
+        <p style={{fontSize:'1.5rem', color:'#888', marginBottom:'40px'}}>Design that gets out of your way.</p>
+        <button type="button" className="hero-min-btn">See Portfolio</button>
+      </section>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -181,11 +208,11 @@ export default function SplitHero() {
 ```jsx
 export default function MinimalHero() {
   return (
-    <div className="hero-minimal">
-      <h1 className="hero-title">Less, but better.</h1>
-      <p className="hero-subtitle">Design that gets out of your way.</p>
-      <button className="hero-btn">See Portfolio</button>
-    </div>
+    <section className="hero-minimal">
+      <h1 className="hero-min-title">Less, but better.</h1>
+      <p className="hero-subtitle-large">Design that gets out of your way.</p>
+      <button type="button" className="hero-min-btn">See Portfolio</button>
+    </section>
   );
 }
 ```
@@ -196,20 +223,20 @@ export default function MinimalHero() {
   text-align: center;
   background: white;
 }
-.hero-title {
-  font-size: 4rem;
+.hero-min-title {
+  font-size: clamp(3rem, 8vw, 4rem);
   font-weight: 900;
   letter-spacing: -2px;
   color: #000;
   margin: 0 0 20px;
   line-height: 1;
 }
-.hero-subtitle {
+.hero-subtitle-large {
   font-size: 1.5rem;
   color: #888;
   margin-bottom: 40px;
 }
-.hero-btn {
+.hero-min-btn {
   background: transparent;
   color: #000;
   border: 2px solid #000;
@@ -218,11 +245,10 @@ export default function MinimalHero() {
   font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.2s;
+  outline: none;
 }
-.hero-btn:hover {
-  background: #000;
-  color: white;
-}
+.hero-min-btn:hover { background: #000; color: white; }
+.hero-min-btn:focus-visible { outline: 3px solid #000; outline-offset: 4px; }
 ```
 
   </TabItem>
@@ -234,12 +260,21 @@ export default function MinimalHero() {
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
       <style>
         {`
-          .h-pat { padding: 80px 20px; text-align: center; border-radius: 12px; background-color: #f3f4f6; background-image: radial-gradient(#cbd5e1 2px, transparent 2px); background-size: 20px 20px; }
-          .h-pat-c { background: white; padding: 40px; border-radius: 16px; max-width: 600px; margin: 0 auto; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-          .h-pat-b { background: #10b981; color: white; padding: 12px 24px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+          .hero-pattern { padding: 80px 20px; text-align: center; border-radius: 12px; background-color: #f3f4f6; background-image: radial-gradient(#cbd5e1 2px, transparent 2px); background-size: 20px 20px; }
+          .hero-card { background: white; padding: 40px; border-radius: 16px; max-width: 600px; margin: 0 auto; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+          .hero-card h1 { margin: 0 0 15px; font-size: clamp(1.8rem, 4vw, 2.5rem); }
+          .hero-btn-pat { background: #10b981; color: white; padding: 12px 24px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; outline: none; }
+          .hero-btn-pat:focus-visible { box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.4); }
+          @media (max-width: 480px) { .hero-card { padding: 20px; } }
         `}
       </style>
-      <div className="h-pat"><div className="h-pat-c"><h1 style={{margin:'0 0 15px'}}>Scale your team instantly.</h1><p style={{color:'#666', marginBottom:'20px'}}>Hire top-tier developers in under 48 hours.</p><button className="h-pat-b">Find Talent</button></div></div>
+      <section className="hero-pattern">
+        <div className="hero-card">
+          <h1>Scale your team instantly.</h1>
+          <p style={{color:'#666', marginBottom:'20px'}}>Hire top-tier developers in under 48 hours.</p>
+          <button type="button" className="hero-btn-pat">Find Talent</button>
+        </div>
+      </section>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -247,13 +282,13 @@ export default function MinimalHero() {
 ```jsx
 export default function PatternHero() {
   return (
-    <div className="hero-pattern">
+    <section className="hero-pattern">
       <div className="hero-card">
         <h1>Scale your team instantly.</h1>
         <p>Hire top-tier developers in under 48 hours.</p>
-        <button className="hero-btn">Find Talent</button>
+        <button type="button" className="hero-btn-pat">Find Talent</button>
       </div>
-    </div>
+    </section>
   );
 }
 ```
@@ -275,9 +310,12 @@ export default function PatternHero() {
   margin: 0 auto;
   box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
-.hero-card h1 { margin: 0 0 15px; }
+.hero-card h1 { 
+  margin: 0 0 15px; 
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
 .hero-card p { color: #666; margin-bottom: 20px; }
-.hero-btn {
+.hero-btn-pat {
   background: #10b981;
   color: white;
   padding: 12px 24px;
@@ -285,6 +323,12 @@ export default function PatternHero() {
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
+}
+.hero-btn-pat:focus-visible { box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.4); }
+
+@media (max-width: 480px) {
+  .hero-card { padding: 20px; }
 }
 ```
 
@@ -297,14 +341,21 @@ export default function PatternHero() {
     <div style={{ fontFamily: 'system-ui, sans-serif' }}>
       <style>
         {`
-          .h-drk { padding: 100px 20px; text-align: center; background: #111; color: white; border-radius: 12px; position: relative; overflow: hidden; }
-          .h-drk-bg { position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)); z-index: 1; }
-          .h-drk-c { position: relative; z-index: 2; }
-          .h-drk-t { font-size: 3.5rem; font-weight: bold; margin: 0 0 20px; }
-          .h-drk-b { background: white; color: #111; padding: 15px 30px; border: none; border-radius: 4px; font-weight: bold; font-size: 1.1rem; cursor: pointer; }
+          .hero-dark { padding: 100px 20px; text-align: center; background: #111; color: white; border-radius: 12px; position: relative; overflow: hidden; }
+          .hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)); z-index: 1; }
+          .hero-drk-c { position: relative; z-index: 2; }
+          .hero-drk-title { font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: bold; margin: 0 0 20px; }
+          .hero-drk-btn { background: white; color: #111; padding: 15px 30px; border: none; border-radius: 4px; font-weight: bold; font-size: 1.1rem; cursor: pointer; outline: none; }
+          .hero-drk-btn:focus-visible { outline: 3px solid #4f46e5; outline-offset: 4px; }
         `}
       </style>
-      <div className="h-drk"><div className="h-drk-bg"></div><div className="h-drk-c"><h1 className="h-drk-t">Enter the next dimension.</h1><button className="h-drk-b">Watch Trailer</button></div></div>
+      <section className="hero-dark">
+        <div className="hero-overlay"></div>
+        <div className="hero-drk-c">
+          <h1 className="hero-drk-title">Enter the next dimension.</h1>
+          <button type="button" className="hero-drk-btn">Watch Trailer</button>
+        </div>
+      </section>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -312,13 +363,13 @@ export default function PatternHero() {
 ```jsx
 export default function DarkHero() {
   return (
-    <div className="hero-dark">
+    <section className="hero-dark">
       <div className="hero-overlay"></div>
-      <div className="hero-content">
-        <h1 className="hero-title">Enter the next dimension.</h1>
-        <button className="hero-btn">Watch Trailer</button>
+      <div className="hero-content-z">
+        <h1 className="hero-drk-title">Enter the next dimension.</h1>
+        <button type="button" className="hero-drk-btn">Watch Trailer</button>
       </div>
-    </div>
+    </section>
   );
 }
 ```
@@ -341,16 +392,16 @@ export default function DarkHero() {
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8));
   z-index: 1;
 }
-.hero-content {
+.hero-content-z {
   position: relative;
   z-index: 2;
 }
-.hero-title {
-  font-size: 3.5rem;
+.hero-drk-title {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
   font-weight: bold;
   margin: 0 0 20px;
 }
-.hero-btn {
+.hero-drk-btn {
   background: white;
   color: #111;
   padding: 15px 30px;
@@ -359,6 +410,11 @@ export default function DarkHero() {
   font-weight: bold;
   font-size: 1.1rem;
   cursor: pointer;
+  outline: none;
+}
+.hero-drk-btn:focus-visible {
+  outline: 3px solid #4f46e5;
+  outline-offset: 4px;
 }
 ```
 

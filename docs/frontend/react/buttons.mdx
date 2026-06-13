@@ -8,15 +8,16 @@ import TabItem from '@theme/TabItem';
 
 # Button Components
 
-A massive collection of button styles for any scenario.
+Enterprise-grade button components with strict accessibility, semantic markup, and `:focus-visible` state management.
 
 ## 1. Solid Buttons (Standard)
 <Tabs>
   <TabItem value="preview" label="Preview" default>
-    <div style={{ padding: '20px', display: 'flex', gap: '15px' }}>
+    <div style={{ padding: '20px', display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
       <style>
         {`
-          .btn-solid { padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; transition: 0.2s; }
+          .btn-solid { padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; transition: background 0.2s, box-shadow 0.2s; outline: none; }
+          .btn-solid:focus-visible { box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4); }
           .btn-solid.primary { background: #4f46e5; color: white; }
           .btn-solid.primary:hover { background: #4338ca; }
           .btn-solid.secondary { background: #e5e7eb; color: #111; }
@@ -25,9 +26,9 @@ A massive collection of button styles for any scenario.
           .btn-solid.danger:hover { background: #dc2626; }
         `}
       </style>
-      <button className="btn-solid primary">Save Changes</button>
-      <button className="btn-solid secondary">Cancel</button>
-      <button className="btn-solid danger">Delete</button>
+      <button type="button" className="btn-solid primary">Save Changes</button>
+      <button type="button" className="btn-solid secondary">Cancel</button>
+      <button type="button" className="btn-solid danger">Delete</button>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -36,22 +37,32 @@ A massive collection of button styles for any scenario.
 export default function SolidButtons() {
   return (
     <div className="flex-container">
-      <button className="btn-solid primary">Save Changes</button>
-      <button className="btn-solid secondary">Cancel</button>
-      <button className="btn-solid danger">Delete</button>
+      <button type="button" className="btn-solid primary">Save Changes</button>
+      <button type="button" className="btn-solid secondary">Cancel</button>
+      <button type="button" className="btn-solid danger">Delete</button>
     </div>
   );
 }
 ```
 
 ```css
+.flex-container {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
 .btn-solid {
   padding: 10px 24px;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   border: none;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+/* Enterprise focus state for keyboard navigation */
+.btn-solid:focus-visible {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4);
 }
 .btn-solid.primary { background: #4f46e5; color: white; }
 .btn-solid.primary:hover { background: #4338ca; }
@@ -67,18 +78,19 @@ export default function SolidButtons() {
 ## 2. Outline Buttons
 <Tabs>
   <TabItem value="preview" label="Preview" default>
-    <div style={{ padding: '20px', display: 'flex', gap: '15px' }}>
+    <div style={{ padding: '20px', display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
       <style>
         {`
-          .btn-outline { padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; background: transparent; transition: 0.2s; }
+          .btn-outline { padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; background: transparent; transition: all 0.2s; outline: none; }
+          .btn-outline:focus-visible { box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4); }
           .btn-outline.primary { border: 2px solid #4f46e5; color: #4f46e5; }
           .btn-outline.primary:hover { background: #4f46e5; color: white; }
           .btn-outline.danger { border: 2px solid #ef4444; color: #ef4444; }
           .btn-outline.danger:hover { background: #ef4444; color: white; }
         `}
       </style>
-      <button className="btn-outline primary">Primary Outline</button>
-      <button className="btn-outline danger">Danger Outline</button>
+      <button type="button" className="btn-outline primary">Primary Outline</button>
+      <button type="button" className="btn-outline danger">Danger Outline</button>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -87,8 +99,8 @@ export default function SolidButtons() {
 export default function OutlineButtons() {
   return (
     <div className="flex-container">
-      <button className="btn-outline primary">Primary Outline</button>
-      <button className="btn-outline danger">Danger Outline</button>
+      <button type="button" className="btn-outline primary">Primary Outline</button>
+      <button type="button" className="btn-outline danger">Danger Outline</button>
     </div>
   );
 }
@@ -102,6 +114,10 @@ export default function OutlineButtons() {
   cursor: pointer;
   background: transparent;
   transition: all 0.2s;
+  outline: none;
+}
+.btn-outline:focus-visible {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4);
 }
 .btn-outline.primary { border: 2px solid #4f46e5; color: #4f46e5; }
 .btn-outline.primary:hover { background: #4f46e5; color: white; }
@@ -115,18 +131,19 @@ export default function OutlineButtons() {
 ## 3. Ghost / Text Buttons
 <Tabs>
   <TabItem value="preview" label="Preview" default>
-    <div style={{ padding: '20px', display: 'flex', gap: '15px' }}>
+    <div style={{ padding: '20px', display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
       <style>
         {`
-          .btn-ghost { padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; background: transparent; transition: 0.2s; }
+          .btn-ghost { padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; background: transparent; transition: background 0.2s, box-shadow 0.2s; outline: none; }
+          .btn-ghost:focus-visible { box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4); }
           .btn-ghost.primary { color: #4f46e5; }
           .btn-ghost.primary:hover { background: rgba(79, 70, 229, 0.1); }
           .btn-ghost.gray { color: #6b7280; }
           .btn-ghost.gray:hover { background: rgba(107, 114, 128, 0.1); color: #111; }
         `}
       </style>
-      <button className="btn-ghost primary">Ghost Primary</button>
-      <button className="btn-ghost gray">Ghost Gray</button>
+      <button type="button" className="btn-ghost primary">Ghost Primary</button>
+      <button type="button" className="btn-ghost gray">Ghost Gray</button>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -135,8 +152,8 @@ export default function OutlineButtons() {
 export default function GhostButtons() {
   return (
     <div className="flex-container">
-      <button className="btn-ghost primary">Ghost Primary</button>
-      <button className="btn-ghost gray">Ghost Gray</button>
+      <button type="button" className="btn-ghost primary">Ghost Primary</button>
+      <button type="button" className="btn-ghost gray">Ghost Gray</button>
     </div>
   );
 }
@@ -150,7 +167,11 @@ export default function GhostButtons() {
   cursor: pointer;
   border: none;
   background: transparent;
-  transition: background 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.btn-ghost:focus-visible {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4);
 }
 .btn-ghost.primary { color: #4f46e5; }
 .btn-ghost.primary:hover { background: rgba(79, 70, 229, 0.1); }
@@ -164,10 +185,11 @@ export default function GhostButtons() {
 ## 4. Icon-Only Buttons
 <Tabs>
   <TabItem value="preview" label="Preview" default>
-    <div style={{ padding: '20px', display: 'flex', gap: '15px' }}>
+    <div style={{ padding: '20px', display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
       <style>
         {`
-          .btn-icon { width: 45px; height: 45px; border-radius: 50%; font-weight: bold; cursor: pointer; border: none; transition: 0.2s; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+          .btn-icon { width: 45px; height: 45px; border-radius: 50%; font-weight: bold; cursor: pointer; border: none; transition: all 0.2s; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; outline: none; }
+          .btn-icon:focus-visible { box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4); }
           .btn-icon.primary { background: #4f46e5; color: white; }
           .btn-icon.primary:hover { background: #4338ca; transform: scale(1.1); }
           .btn-icon.secondary { background: #e5e7eb; color: #111; }
@@ -176,9 +198,9 @@ export default function GhostButtons() {
           .btn-icon.danger:hover { background: #dc2626; transform: scale(1.1); }
         `}
       </style>
-      <button className="btn-icon primary">➔</button>
-      <button className="btn-icon secondary">⚙</button>
-      <button className="btn-icon danger">✖</button>
+      <button type="button" aria-label="Proceed Next" className="btn-icon primary">➔</button>
+      <button type="button" aria-label="Settings" className="btn-icon secondary">⚙</button>
+      <button type="button" aria-label="Close" className="btn-icon danger">✖</button>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -187,9 +209,10 @@ export default function GhostButtons() {
 export default function IconButtons() {
   return (
     <div className="flex-container">
-      <button className="btn-icon primary">➔</button>
-      <button className="btn-icon secondary">⚙</button>
-      <button className="btn-icon danger">✖</button>
+      {/* aria-label is required for screen readers when text is missing */}
+      <button type="button" aria-label="Proceed Next" className="btn-icon primary">➔</button>
+      <button type="button" aria-label="Settings" className="btn-icon secondary">⚙</button>
+      <button type="button" aria-label="Close" className="btn-icon danger">✖</button>
     </div>
   );
 }
@@ -208,6 +231,10 @@ export default function IconButtons() {
   display: flex;
   align-items: center;
   justify-content: center;
+  outline: none;
+}
+.btn-icon:focus-visible {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.4);
 }
 .btn-icon.primary { background: #4f46e5; color: white; }
 .btn-icon.primary:hover { background: #4338ca; transform: scale(1.1); }
@@ -223,21 +250,23 @@ export default function IconButtons() {
 ## 5. Neumorphic (3D) Buttons
 <Tabs>
   <TabItem value="preview" label="Preview" default>
-    <div style={{ padding: '40px 20px', display: 'flex', gap: '20px', background: '#e0e5ec', borderRadius: '12px' }}>
+    <div style={{ padding: '40px 20px', display: 'flex', gap: '20px', background: '#e0e5ec', borderRadius: '12px', flexWrap: 'wrap' }}>
       <style>
         {`
           .btn-neumorphic { 
             padding: 15px 30px; border-radius: 12px; font-weight: bold; color: #4b5563; 
-            background: #e0e5ec; border: none; cursor: pointer; transition: 0.2s;
+            background: #e0e5ec; border: none; cursor: pointer; transition: all 0.2s; outline: none;
             box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);
           }
+          .btn-neumorphic:hover { color: #111; }
+          .btn-neumorphic:focus-visible { outline: 2px solid #4f46e5; outline-offset: 4px; }
           .btn-neumorphic:active {
             box-shadow: inset 6px 6px 10px 0 rgba(163,177,198,0.7), inset -6px -6px 10px 0 rgba(255,255,255, 0.8);
           }
         `}
       </style>
-      <button className="btn-neumorphic">Neumorphic 1</button>
-      <button className="btn-neumorphic">Neumorphic 2</button>
+      <button type="button" className="btn-neumorphic">Neumorphic 1</button>
+      <button type="button" className="btn-neumorphic">Neumorphic 2</button>
     </div>
   </TabItem>
   <TabItem value="code" label="Code">
@@ -246,8 +275,8 @@ export default function IconButtons() {
 export default function NeumorphicButtons() {
   return (
     <div className="neumorphic-container">
-      <button className="btn-neumorphic">Neumorphic 1</button>
-      <button className="btn-neumorphic">Neumorphic 2</button>
+      <button type="button" className="btn-neumorphic">Neumorphic 1</button>
+      <button type="button" className="btn-neumorphic">Neumorphic 2</button>
     </div>
   );
 }
@@ -258,6 +287,7 @@ export default function NeumorphicButtons() {
   padding: 40px 20px;
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
   background: #e0e5ec;
   border-radius: 12px;
 }
@@ -270,7 +300,13 @@ export default function NeumorphicButtons() {
   border: none;
   cursor: pointer;
   transition: all 0.2s;
+  outline: none;
   box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);
+}
+.btn-neumorphic:hover { color: #111; }
+.btn-neumorphic:focus-visible { 
+  outline: 2px solid #4f46e5; 
+  outline-offset: 4px; 
 }
 .btn-neumorphic:active {
   box-shadow: inset 6px 6px 10px 0 rgba(163,177,198,0.7), inset -6px -6px 10px 0 rgba(255,255,255, 0.8);
