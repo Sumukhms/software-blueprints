@@ -1,0 +1,106 @@
+---
+sidebar_position: 5
+title: "Hero Sections"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Hero Sections
+
+The top section of your landing pages.
+
+## Modern Gradient Hero
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <style>
+        {`
+          .hero-gradient {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            border-radius: 16px;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.05);
+          }
+          .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #111;
+            margin: 0 0 20px;
+            background: linear-gradient(to right, #4f46e5, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+          .hero-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+          }
+          .hero-btn {
+            background: #111;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+          }
+          .hero-btn:hover {
+            transform: scale(1.05);
+          }
+        `}
+      </style>
+      <div className="hero-gradient">
+        <h1 className="hero-title">Build Faster with Blueprints.</h1>
+        <p className="hero-subtitle">
+          Stop rewriting the same generic UI components over and over. Copy, paste, and launch your next big idea today.
+        </p>
+        <button className="hero-btn">Get Started for Free</button>
+      </div>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+function GradientHero() {
+  return (
+    <div className="hero-gradient">
+      <h1 className="hero-title">Build Faster with Blueprints.</h1>
+      <p className="hero-subtitle">
+        Stop rewriting the same generic UI components over and over. Copy, paste, and launch your next big idea today.
+      </p>
+      <button className="hero-btn">Get Started for Free</button>
+    </div>
+  );
+}
+```
+
+```css
+.hero-gradient {
+  padding: 80px 20px; text-align: center; border-radius: 16px;
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+}
+.hero-title {
+  font-size: 3rem; font-weight: 800; margin: 0 0 20px;
+  background: linear-gradient(to right, #4f46e5, #ec4899);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-subtitle {
+  font-size: 1.2rem; color: #666; max-width: 600px;
+  margin: 0 auto 30px; line-height: 1.6;
+}
+.hero-btn {
+  background: #111; color: white; padding: 15px 30px; border-radius: 30px;
+  border: none; font-size: 1.1rem; font-weight: bold; cursor: pointer;
+}
+.hero-btn:hover { transform: scale(1.05); }
+```
+
+  </TabItem>
+</Tabs>

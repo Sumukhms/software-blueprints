@@ -120,5 +120,75 @@ function Footer() {
 .footer-links a:hover { color: white; }
 ```
 
+</Tabs>
+
+## Minimal Centered Footer
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <style>
+        {`
+          .footer-minimal {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            background: white;
+            border-radius: 8px;
+          }
+          .footer-minimal-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+          }
+          .footer-minimal-links a {
+            color: #111;
+            text-decoration: none;
+            font-weight: 500;
+          }
+          .footer-minimal-links a:hover { color: #4f46e5; }
+          .footer-copyright { font-size: 0.9rem; margin: 0; }
+        `}
+      </style>
+      <footer className="footer-minimal">
+        <div className="footer-minimal-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Contact Support</a>
+        </div>
+        <p className="footer-copyright">© 2026 Software Blueprints. All rights reserved.</p>
+      </footer>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+function MinimalFooter() {
+  return (
+    <footer className="footer-minimal">
+      <div className="footer-minimal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Support</a>
+      </div>
+      <p className="footer-copyright">© 2026 Software Blueprints. All rights reserved.</p>
+    </footer>
+  );
+}
+```
+
+```css
+.footer-minimal {
+  text-align: center; padding: 40px 20px; border-top: 1px solid #eee;
+  color: #666; background: white;
+}
+.footer-minimal-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; }
+.footer-minimal-links a { color: #111; text-decoration: none; font-weight: 500; }
+.footer-minimal-links a:hover { color: #4f46e5; }
+.footer-copyright { font-size: 0.9rem; margin: 0; }
+```
+
   </TabItem>
 </Tabs>

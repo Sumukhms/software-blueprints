@@ -1,0 +1,117 @@
+---
+sidebar_position: 7
+title: "Stats & Dashboard"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Dashboard Stats
+
+KPI and metric displays for admin dashboards.
+
+## Simple Metric Grid
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <style>
+        {`
+          .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+          }
+          .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+          }
+          .stat-title {
+            color: #6b7280;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0 0 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+          }
+          .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #111;
+            margin: 0 0 5px;
+          }
+          .stat-trend {
+            font-size: 0.9rem;
+            font-weight: 500;
+          }
+          .trend-up { color: #10b981; }
+          .trend-down { color: #ef4444; }
+        `}
+      </style>
+      <div className="stat-grid">
+        <div className="stat-card">
+          <h4 className="stat-title">Total Revenue</h4>
+          <p className="stat-value">$45,231</p>
+          <p className="stat-trend trend-up">↑ +12.5% from last month</p>
+        </div>
+        <div className="stat-card">
+          <h4 className="stat-title">Active Users</h4>
+          <p className="stat-value">2,405</p>
+          <p className="stat-trend trend-up">↑ +4.2% from last month</p>
+        </div>
+        <div className="stat-card">
+          <h4 className="stat-title">Churn Rate</h4>
+          <p className="stat-value">1.2%</p>
+          <p className="stat-trend trend-down">↓ -0.5% from last month</p>
+        </div>
+      </div>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+function StatDashboard() {
+  return (
+    <div className="stat-grid">
+      <div className="stat-card">
+        <h4 className="stat-title">Total Revenue</h4>
+        <p className="stat-value">$45,231</p>
+        <p className="stat-trend trend-up">↑ +12.5% from last month</p>
+      </div>
+      <div className="stat-card">
+        <h4 className="stat-title">Active Users</h4>
+        <p className="stat-value">2,405</p>
+        <p className="stat-trend trend-up">↑ +4.2% from last month</p>
+      </div>
+      <div className="stat-card">
+        <h4 className="stat-title">Churn Rate</h4>
+        <p className="stat-value">1.2%</p>
+        <p className="stat-trend trend-down">↓ -0.5% from last month</p>
+      </div>
+    </div>
+  );
+}
+```
+
+```css
+.stat-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;
+}
+.stat-card {
+  background: white; padding: 20px; border-radius: 10px;
+  border: 1px solid #e5e7eb; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.stat-title {
+  color: #6b7280; font-size: 0.9rem; font-weight: 500; margin: 0 0 10px;
+}
+.stat-value { font-size: 2rem; font-weight: bold; color: #111; margin: 0 0 5px; }
+.stat-trend { font-size: 0.9rem; font-weight: 500; }
+.trend-up { color: #10b981; }
+.trend-down { color: #ef4444; }
+```
+
+  </TabItem>
+</Tabs>

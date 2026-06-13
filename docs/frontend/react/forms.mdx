@@ -1,0 +1,98 @@
+---
+sidebar_position: 6
+title: "Forms & Auth"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Forms & Authentication
+
+Essential forms for user input.
+
+## Dark Mode Login Form
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ fontFamily: 'system-ui, sans-serif', padding: '20px', background: '#0a0a0a', borderRadius: '12px', display: 'flex', justifyContent: 'center' }}>
+      <style>
+        {`
+          .auth-form {
+            background: #171717;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            width: 100%;
+            max-width: 400px;
+          }
+          .auth-title { color: white; margin: 0 0 20px; font-size: 1.8rem; }
+          .auth-group { margin-bottom: 20px; }
+          .auth-label { display: block; color: #a3a3a3; margin-bottom: 8px; font-size: 0.9rem; }
+          .auth-input {
+            width: 100%; padding: 12px; border-radius: 6px;
+            background: #262626; border: 1px solid #404040; color: white;
+            box-sizing: border-box;
+          }
+          .auth-input:focus { outline: none; border-color: #4f46e5; }
+          .auth-btn {
+            width: 100%; padding: 12px; border-radius: 6px; border: none;
+            background: #4f46e5; color: white; font-weight: bold; cursor: pointer;
+          }
+        `}
+      </style>
+      <div className="auth-form">
+        <h2 className="auth-title">Welcome back</h2>
+        <div className="auth-group">
+          <label className="auth-label">Email Address</label>
+          <input type="email" className="auth-input" placeholder="you@example.com" />
+        </div>
+        <div className="auth-group">
+          <label className="auth-label">Password</label>
+          <input type="password" className="auth-input" placeholder="••••••••" />
+        </div>
+        <button className="auth-btn">Sign In</button>
+      </div>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+function LoginForm() {
+  return (
+    <div className="auth-form">
+      <h2 className="auth-title">Welcome back</h2>
+      <div className="auth-group">
+        <label className="auth-label">Email Address</label>
+        <input type="email" className="auth-input" placeholder="you@example.com" />
+      </div>
+      <div className="auth-group">
+        <label className="auth-label">Password</label>
+        <input type="password" className="auth-input" placeholder="••••••••" />
+      </div>
+      <button className="auth-btn">Sign In</button>
+    </div>
+  );
+}
+```
+
+```css
+.auth-form {
+  background: #171717; padding: 40px; border-radius: 12px;
+  border: 1px solid #333; width: 100%; max-width: 400px;
+}
+.auth-title { color: white; margin: 0 0 20px; font-size: 1.8rem; }
+.auth-group { margin-bottom: 20px; }
+.auth-label { display: block; color: #a3a3a3; margin-bottom: 8px; font-size: 0.9rem; }
+.auth-input {
+  width: 100%; padding: 12px; border-radius: 6px; box-sizing: border-box;
+  background: #262626; border: 1px solid #404040; color: white;
+}
+.auth-input:focus { outline: none; border-color: #4f46e5; }
+.auth-btn {
+  width: 100%; padding: 12px; border-radius: 6px; border: none;
+  background: #4f46e5; color: white; font-weight: bold; cursor: pointer;
+}
+```
+
+  </TabItem>
+</Tabs>

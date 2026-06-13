@@ -120,5 +120,102 @@ function Navbar() {
 }
 ```
 
+</Tabs>
+
+## Glassmorphism Navbar
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ padding: '20px', fontFamily: 'system-ui, sans-serif', background: 'linear-gradient(135deg, #4f46e5, #ec4899)', borderRadius: '12px', minHeight: '200px' }}>
+      <style>
+        {`
+          .glass-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: white;
+          }
+          .glass-logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+          }
+          .glass-links {
+            display: flex;
+            gap: 20px;
+          }
+          .glass-links a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            transition: color 0.2s;
+          }
+          .glass-links a:hover { color: white; }
+          .glass-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            font-weight: bold;
+          }
+          .glass-btn:hover { background: rgba(255, 255, 255, 0.3); }
+        `}
+      </style>
+      <nav className="glass-nav">
+        <div className="glass-logo">VISION.</div>
+        <div className="glass-links">
+          <a href="#">Showcase</a>
+          <a href="#">Studio</a>
+          <a href="#">Contact</a>
+        </div>
+        <button className="glass-btn">Enter</button>
+      </nav>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+function GlassNavbar() {
+  return (
+    <nav className="glass-nav">
+      <div className="glass-logo">VISION.</div>
+      <div className="glass-links">
+        <a href="#">Showcase</a>
+        <a href="#">Studio</a>
+        <a href="#">Contact</a>
+      </div>
+      <button className="glass-btn">Enter</button>
+    </nav>
+  );
+}
+```
+
+```css
+.glass-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 30px; border-radius: 12px; color: white;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.glass-logo { font-weight: bold; font-size: 1.2rem; letter-spacing: 1px; }
+.glass-links { display: flex; gap: 20px; }
+.glass-links a { text-decoration: none; color: rgba(255, 255, 255, 0.8); font-weight: 500; }
+.glass-links a:hover { color: white; }
+.glass-btn {
+  background: rgba(255, 255, 255, 0.2); color: white;
+  padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.glass-btn:hover { background: rgba(255, 255, 255, 0.3); }
+```
+
   </TabItem>
 </Tabs>
