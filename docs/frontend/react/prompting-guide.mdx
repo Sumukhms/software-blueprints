@@ -1,0 +1,69 @@
+---
+sidebar_position: 10
+title: "AI Prompts Guide"
+---
+
+# AI Prompting Guide for Enterprise UI
+
+When generating new components for this library using AI (like ChatGPT, Claude, or GitHub Copilot), you must ensure the AI follows strict **Enterprise Industry Standards**.
+
+If you just ask an AI to "build a button," it will generate generic `<div>` soup. Use the copy-pasteable draft prompts below to guarantee high-quality, production-ready code.
+
+## The Master System Prompt
+
+If you are starting a new chat session with an AI, paste this master prompt first to set the rules.
+
+```text
+Act as a Staff Frontend Engineer building an enterprise-grade React component library.
+Whenever I ask you to generate a UI component, you must adhere to the following strict industry standards:
+
+1. Semantic HTML: Never use generic <div> tags if a semantic HTML5 tag exists (use <article>, <section>, <nav>, <figure>, <footer>, <main>, etc.).
+2. Accessibility (a11y): Include `aria-label` attributes for icon-only buttons or ambiguous visual elements. Use `role` attributes where appropriate. Ensure `<form>` elements use strict `htmlFor` and `id` linking for all inputs.
+3. Interactive States: Every interactive element (a, button, input) MUST have a explicit `:focus-visible` CSS pseudo-class to ensure a highly visible outline for keyboard navigation.
+4. Mobile Responsiveness: The component must scale flawlessly down to a 320px screen. Use CSS Grid/Flexbox, `auto-fit`, and `@media (max-width: 768px)` queries to stack elements vertically on mobile.
+5. Zero Dependencies: Write the code in pure React (`.jsx`) and plain CSS. Do not use TailwindCSS or external libraries unless explicitly requested.
+
+Return the code as a single functional React component and an accompanying block of pure CSS.
+```
+
+## Specific Component Prompts
+
+Use these targeted prompts to generate new variants for specific categories.
+
+### Generating Cards
+
+```text
+Generate an Enterprise-Grade React Card component for a [Pricing / Blog / User Profile] use case. 
+Wrap the entire card in an <article> tag. Include an image area, a title, a brief description, and a call-to-action button. Ensure the card has a subtle hover state (`transform` or `box-shadow`) and is 100% mobile-responsive. Ensure the button has a `:focus-visible` focus ring.
+```
+
+### Generating Navbars
+
+```text
+Generate a modern React Navbar component. 
+Wrap it in a semantic <nav> tag. Include a brand logo on the left, 3 navigation links in the center, and a 'Sign Up' button on the right. 
+Crucially, use a CSS media query at `max-width: 768px` to collapse the layout or stack the elements so it does not break on mobile devices. Ensure all links have `:focus-visible` styling.
+```
+
+### Generating Forms & Authentication
+
+```text
+Generate an accessible React Login Form. 
+Wrap it in a strict <form> tag with an `onSubmit` handler. Include an email input and a password input. 
+Every input MUST have a corresponding <label>. You must link them using `htmlFor` on the label and `id` on the input. If you hide the label visually, use a `.sr-only` class to keep it readable by screen readers. Add focus rings to the inputs and the submit button.
+```
+
+### Generating Hero Sections
+
+```text
+Generate a high-impact Hero Section for a landing page. 
+Wrap it in a <section> tag. Include a massive <h1> headline, a subtitle <p>, and two Call-to-Action buttons.
+Use `clamp()` for the typography so the font size scales fluidly between mobile and desktop. Ensure the flex/grid layout stacks vertically on mobile screens (`max-width: 768px`).
+```
+
+### Generating Dashboards / Stats
+
+```text
+Generate a Data Visualization / KPI Dashboard Widget in React.
+Wrap the widget in a <section> or <article>. If the widget relies on visual indicators (like a red/green arrow or an icon), you must include `aria-label` or `aria-hidden="true"` so screen readers can accurately interpret the data. Make it responsive using a CSS Grid with `repeat(auto-fit, minmax(...))`.
+```
