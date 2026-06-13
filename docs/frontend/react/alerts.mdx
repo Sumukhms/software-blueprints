@@ -1,0 +1,242 @@
+---
+sidebar_position: 9
+title: "Alerts & Notifications"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Alerts & Notifications
+
+Accessible, highly visible alert components designed with explicit ARIA roles (`role="alert"` or `role="status"`) to ensure immediate screen reader notification.
+
+## 1. Standard Accent Alert
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <style>
+        {`
+          .alert-std { display: flex; align-items: flex-start; gap: 15px; padding: 16px; border-radius: 8px; border-left: 4px solid #3b82f6; background: #eff6ff; color: #1e3a8a; max-width: 500px; box-sizing: border-box; }
+          .alert-std.success { border-left-color: #10b981; background: #ecfdf5; color: #065f46; }
+          .alert-std.danger { border-left-color: #ef4444; background: #fef2f2; color: #991b1b; }
+          .alert-icon { font-weight: bold; font-size: 1.2rem; }
+          .alert-content h4 { margin: 0 0 5px; font-size: 1rem; }
+          .alert-content p { margin: 0; font-size: 0.9rem; }
+        `}
+      </style>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+        <div className="alert-std success" role="status" aria-live="polite">
+          <div className="alert-icon" aria-hidden="true">✓</div>
+          <div className="alert-content"><h4>Update successful</h4><p>Your profile has been updated successfully.</p></div>
+        </div>
+        <div className="alert-std danger" role="alert">
+          <div className="alert-icon" aria-hidden="true">!</div>
+          <div className="alert-content"><h4>Payment failed</h4><p>Please check your credit card details and try again.</p></div>
+        </div>
+      </div>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+export default function StandardAlert() {
+  return (
+    <div className="alert-container">
+      {/* role="status" for non-critical, polite updates */}
+      <div className="alert-std success" role="status" aria-live="polite">
+        <div className="alert-icon" aria-hidden="true">✓</div>
+        <div className="alert-content">
+          <h4>Update successful</h4>
+          <p>Your profile has been updated successfully.</p>
+        </div>
+      </div>
+
+      {/* role="alert" for immediate, critical errors */}
+      <div className="alert-std danger" role="alert">
+        <div className="alert-icon" aria-hidden="true">!</div>
+        <div className="alert-content">
+          <h4>Payment failed</h4>
+          <p>Please check your credit card details and try again.</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+```css
+.alert-container { display: flex; flexDirection: column; gap: 15px; }
+
+.alert-std {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+  background: #eff6ff;
+  color: #1e3a8a;
+  max-width: 500px;
+  box-sizing: border-box;
+}
+.alert-std.success {
+  border-left-color: #10b981;
+  background: #ecfdf5;
+  color: #065f46;
+}
+.alert-std.danger {
+  border-left-color: #ef4444;
+  background: #fef2f2;
+  color: #991b1b;
+}
+.alert-icon { font-weight: bold; font-size: 1.2rem; }
+.alert-content h4 { margin: 0 0 5px; font-size: 1rem; }
+.alert-content p { margin: 0; font-size: 0.9rem; }
+```
+
+  </TabItem>
+</Tabs>
+
+## 2. Minimalist Banner Alert
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <style>
+        {`
+          .alert-banner { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: #111; color: white; border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex-wrap: wrap; gap: 15px; }
+          .banner-text { display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 0.9rem; }
+          .banner-badge { background: #4f46e5; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+          .banner-btn { background: transparent; border: none; color: white; cursor: pointer; font-size: 1.2rem; outline: none; border-radius: 4px; padding: 0 4px; }
+          .banner-btn:focus-visible { box-shadow: 0 0 0 2px white; }
+        `}
+      </style>
+      <div className="alert-banner" role="alert">
+        <div className="banner-text">
+          <span className="banner-badge">New</span>
+          <span>We just launched v2.0 of our API. Check the docs.</span>
+        </div>
+        <button type="button" className="banner-btn" aria-label="Dismiss alert">×</button>
+      </div>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+export default function BannerAlert() {
+  return (
+    <div className="alert-banner" role="alert">
+      <div className="banner-text">
+        <span className="banner-badge">New</span>
+        <span>We just launched v2.0 of our API. Check the docs.</span>
+      </div>
+      <button type="button" className="banner-btn" aria-label="Dismiss alert">×</button>
+    </div>
+  );
+}
+```
+
+```css
+.alert-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #111;
+  color: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.banner-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.banner-badge {
+  background: #4f46e5;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.banner-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  outline: none;
+  border-radius: 4px;
+  padding: 0 4px;
+}
+.banner-btn:focus-visible { box-shadow: 0 0 0 2px white; }
+```
+
+  </TabItem>
+</Tabs>
+
+## 3. Top-Border Notice
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <style>
+        {`
+          .alert-top { background: white; border: 1px solid #eee; border-top: 4px solid #f59e0b; padding: 20px; border-radius: 6px; max-width: 400px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+          .alert-top h4 { margin: 0 0 8px; color: #111; display: flex; align-items: center; gap: 8px; }
+          .alert-top p { margin: 0; color: #666; font-size: 0.9rem; line-height: 1.5; }
+        `}
+      </style>
+      <div className="alert-top" role="status">
+        <h4><span aria-hidden="true" style={{color:'#f59e0b'}}>⚠</span> Attention Required</h4>
+        <p>Your subscription is set to expire in 3 days. Please update your billing information to prevent service interruption.</p>
+      </div>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+export default function TopBorderAlert() {
+  return (
+    <div className="alert-top" role="status">
+      <h4>
+        <span aria-hidden="true" className="icon-warn">⚠</span> 
+        Attention Required
+      </h4>
+      <p>Your subscription is set to expire in 3 days. Please update your billing information to prevent service interruption.</p>
+    </div>
+  );
+}
+```
+
+```css
+.alert-top {
+  background: white;
+  border: 1px solid #eee;
+  border-top: 4px solid #f59e0b;
+  padding: 20px;
+  border-radius: 6px;
+  max-width: 400px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+.alert-top h4 {
+  margin: 0 0 8px;
+  color: #111;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.icon-warn { color: #f59e0b; }
+.alert-top p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+```
+
+  </TabItem>
+</Tabs>

@@ -1,0 +1,290 @@
+---
+sidebar_position: 8
+title: "Tables"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Data Tables
+
+Enterprise-grade table components emphasizing responsive design (mobile scrolling), clear data hierarchy, and accessibility (`aria-labels`, `scope`).
+
+## 1. Standard Data Table
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <style>
+        {`
+          .table-wrapper { width: 100%; overflow-x: auto; background: white; border-radius: 8px; border: 1px solid #e5e7eb; }
+          .table-std { width: 100%; border-collapse: collapse; text-align: left; min-width: 600px; }
+          .table-std th { background: #f9fafb; padding: 12px 16px; font-weight: 600; color: #4b5563; border-bottom: 1px solid #e5e7eb; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; }
+          .table-std td { padding: 16px; border-bottom: 1px solid #e5e7eb; color: #111; vertical-align: middle; }
+          .table-std tr:last-child td { border-bottom: none; }
+        `}
+      </style>
+      <div className="table-wrapper" tabIndex="0" aria-label="Standard Data Table">
+        <table className="table-std">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Role</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Jane Doe</td><td>Admin</td><td><span style={{color:'#10b981', fontWeight:'bold'}}>Active</span></td></tr>
+            <tr><td>John Smith</td><td>Editor</td><td><span style={{color:'#6b7280', fontWeight:'bold'}}>Offline</span></td></tr>
+            <tr><td>Alice Johnson</td><td>Viewer</td><td><span style={{color:'#10b981', fontWeight:'bold'}}>Active</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+export default function StandardTable() {
+  return (
+    {/* wrapper allows horizontal scrolling on mobile */}
+    <div className="table-wrapper" tabIndex="0" aria-label="Standard Data Table">
+      <table className="table-std">
+        <thead>
+          <tr>
+            {/* scope="col" helps screen readers understand headers */}
+            <th scope="col">Name</th>
+            <th scope="col">Role</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jane Doe</td>
+            <td>Admin</td>
+            <td><span className="status-active">Active</span></td>
+          </tr>
+          <tr>
+            <td>John Smith</td>
+            <td>Editor</td>
+            <td><span className="status-offline">Offline</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+}
+```
+
+```css
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+.table-wrapper:focus-visible { outline: 2px solid #4f46e5; }
+
+.table-std {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 600px;
+}
+.table-std th {
+  background: #f9fafb;
+  padding: 12px 16px;
+  font-weight: 600;
+  color: #4b5563;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.table-std td {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111;
+  vertical-align: middle;
+}
+.table-std tr:last-child td { border-bottom: none; }
+.status-active { color: #10b981; font-weight: bold; }
+.status-offline { color: #6b7280; font-weight: bold; }
+```
+
+  </TabItem>
+</Tabs>
+
+## 2. Zebra Striped Table
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <style>
+        {`
+          .table-striped-wrap { width: 100%; overflow-x: auto; border: 1px solid #ddd; border-radius: 8px; }
+          .table-striped { width: 100%; border-collapse: collapse; text-align: left; min-width: 500px; background: white; }
+          .table-striped th { background: #111; color: white; padding: 15px; }
+          .table-striped td { padding: 15px; color: #333; }
+          .table-striped tbody tr:nth-child(even) { background: #f3f4f6; }
+        `}
+      </style>
+      <div className="table-striped-wrap" tabIndex="0">
+        <table className="table-striped">
+          <thead>
+            <tr><th scope="col">Invoice #</th><th scope="col">Amount</th><th scope="col">Date</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>INV-001</td><td>$1,200.00</td><td>Oct 12, 2026</td></tr>
+            <tr><td>INV-002</td><td>$450.00</td><td>Oct 15, 2026</td></tr>
+            <tr><td>INV-003</td><td>$3,150.00</td><td>Oct 18, 2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+export default function StripedTable() {
+  return (
+    <div className="table-striped-wrap" tabIndex="0" aria-label="Invoices List">
+      <table className="table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Invoice #</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>INV-001</td><td>$1,200.00</td><td>Oct 12, 2026</td></tr>
+          <tr><td>INV-002</td><td>$450.00</td><td>Oct 15, 2026</td></tr>
+          <tr><td>INV-003</td><td>$3,150.00</td><td>Oct 18, 2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+  );
+}
+```
+
+```css
+.table-striped-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+.table-striped-wrap:focus-visible { outline: 2px solid #111; }
+
+.table-striped {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 500px;
+  background: white;
+}
+.table-striped th {
+  background: #111;
+  color: white;
+  padding: 15px;
+}
+.table-striped td { padding: 15px; color: #333; }
+.table-striped tbody tr:nth-child(even) {
+  background: #f3f4f6;
+}
+```
+
+  </TabItem>
+</Tabs>
+
+## 3. Interactive Hover Table
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    <div style={{ fontFamily: 'system-ui, sans-serif' }}>
+      <style>
+        {`
+          .table-hover-wrap { width: 100%; overflow-x: auto; }
+          .table-hover { width: 100%; border-collapse: collapse; background: white; border: 1px solid #eee; text-align: left; }
+          .table-hover th { padding: 15px; border-bottom: 2px solid #000; font-weight: bold; }
+          .table-hover td { padding: 15px; border-bottom: 1px solid #eee; transition: background 0.2s; cursor: pointer; }
+          .table-hover tbody tr:hover td { background: #e0e7ff; color: #3730a3; }
+        `}
+      </style>
+      <div className="table-hover-wrap" tabIndex="0">
+        <table className="table-hover">
+          <thead>
+            <tr><th scope="col">Project</th><th scope="col">Client</th><th scope="col">Deadline</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Website Redesign</td><td>Acme Corp</td><td>Nov 1, 2026</td></tr>
+            <tr><td>Mobile App</td><td>Global Tech</td><td>Dec 15, 2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </TabItem>
+  <TabItem value="code" label="Code">
+
+```jsx
+export default function HoverTable() {
+  return (
+    <div className="table-hover-wrap" tabIndex="0" aria-label="Projects Table">
+      <table className="table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Project</th>
+            <th scope="col">Client</th>
+            <th scope="col">Deadline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Website Redesign</td>
+            <td>Acme Corp</td>
+            <td>Nov 1, 2026</td>
+          </tr>
+          <tr>
+            <td>Mobile App</td>
+            <td>Global Tech</td>
+            <td>Dec 15, 2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+}
+```
+
+```css
+.table-hover-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+.table-hover-wrap:focus-visible { outline: 2px solid #4f46e5; }
+
+.table-hover {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid #eee;
+  text-align: left;
+}
+.table-hover th {
+  padding: 15px;
+  border-bottom: 2px solid #000;
+  font-weight: bold;
+}
+.table-hover td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.table-hover tbody tr:hover td {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+```
+
+  </TabItem>
+</Tabs>
