@@ -1,0 +1,124 @@
+---
+sidebar_position: 1
+title: "Getting Started"
+---
+
+# 🚀 Getting Started Guide
+
+Welcome to Software Blueprints! This repository is organized into a strict **3-Pillar Architecture** to keep the sidebar clean and intuitive.
+
+Whether you are a frontend developer adding new React components, or a backend architect documenting a Django setup, you must follow this absolute documentation to structure your work.
+
+---
+
+## 🏛️ The Directory Structure
+
+Everything in this project lives inside the `docs/` folder. It is split into three main categories:
+
+1. `frontend/` - UI component libraries (e.g. React, Vue, Svelte)
+2. `backend/` - Architecture blueprints (e.g. Django, Node, Spring Boot)
+3. `full-stack/` - End-to-end boilerplates (e.g. AI SaaS, E-commerce)
+
+Docusaurus **automatically generates the sidebar** based on this folder structure. You do not need to manually edit `sidebars.js`.
+
+---
+
+## 📁 How to Add a New Technology Category
+
+Let's say you want to add a new frontend library for **Vue.js**.
+
+**1. Create a Folder**
+Create a new folder inside the correct pillar:
+`docs/frontend/vue/`
+
+**2. Add a `_category_.json` File**
+To ensure the sidebar displays the name beautifully (with capital letters), create a `_category_.json` file inside your new folder:
+
+```json title="docs/frontend/vue/_category_.json"
+{
+  "label": "Vue UI Templates",
+  "position": 2
+}
+```
+*The `position` controls where it appears in the list (1 comes first).*
+
+---
+
+## 📄 How to Add a New Component or Blueprint Page
+
+Once your category folder exists, you can add Markdown (`.md` or `.mdx`) files inside it. 
+
+### Step 1: Create the file
+Create your file, for example: `docs/frontend/vue/buttons.mdx`.
+
+### Step 2: Add the Frontmatter
+At the very top of your file, you MUST include this block (called Frontmatter) to tell Docusaurus the title and sidebar position of the page:
+
+```markdown
+---
+sidebar_position: 1
+title: "Button Components"
+---
+```
+
+### Step 3: Write your Content (Standard Markdown)
+If you are writing a standard backend architecture blueprint, you can just write normal Markdown. You can even include Mermaid diagrams!
+
+<pre>
+```mermaid
+graph TD;
+    Client-->Server;
+    Server-->Database;
+```
+</pre>
+
+### Step 4: Adding Interactive UI Previews (MDX Tabs)
+If you are adding frontend code (like a React or Vue component), we require you to use the **Preview & Code Tabs** pattern.
+
+Import the Tabs component right below your frontmatter, and structure your code like this:
+
+```mdx
+---
+sidebar_position: 2
+title: "Hero Sections"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Hero Sections
+
+<Tabs>
+  <TabItem value="preview" label="Preview" default>
+    {/* 1. Put the actual running visual component here */}
+    <div style={{ padding: '20px', background: '#111', color: 'white' }}>
+      <h1>Welcome to the Future.</h1>
+      <button>Get Started</button>
+    </div>
+  </TabItem>
+
+  <TabItem value="code" label="Code">
+    {/* 2. Put the code snippet here inside a markdown block */}
+    ```jsx
+    export default function Hero() {
+      return (
+        <div className="hero-dark">
+          <h1>Welcome to the Future.</h1>
+          <button>Get Started</button>
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+</Tabs>
+```
+
+---
+
+## 🚦 Final Checklist
+
+Before you open a Pull Request, always ask yourself:
+1. Did I put my file in the correct pillar (`frontend`, `backend`, `full-stack`)?
+2. Did I include the `---` Frontmatter with a `title` and `sidebar_position`?
+3. If it is a UI component, did I use `<Tabs>` for Preview and Code?
+4. **Did I follow the strict Enterprise Rules listed in `CONTRIBUTING.md`?**
