@@ -1,9 +1,7 @@
-import type {ReactNode} from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
@@ -20,8 +18,8 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/mern/overview">
-            Browse Blueprints 🏗️
+            to="/docs/getting-started">
+            Get Started ⏱️
           </Link>
         </div>
       </div>
@@ -29,15 +27,21 @@ function HomepageHeader() {
   );
 }
 
-export default function Home(): ReactNode {
+export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`Home | ${siteConfig.title}`}
+      description="Open-Source System Architecture Designs and UI Blueprints">
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
+        <div className="container" style={{ textAlign: 'center', padding: '50px 0' }}>
+          <h2>Enterprise-Grade Blueprints</h2>
+          <p>
+            This repository contains standardized frontend UI components, backend architectures, 
+            and full-stack boilerplates. Click "Get Started" to dive into the documentation!
+          </p>
+        </div>
       </main>
     </Layout>
   );

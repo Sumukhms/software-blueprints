@@ -115,6 +115,19 @@ import TabItem from '@theme/TabItem';
 
 ---
 
+## ⛔ Strict Contribution Boundaries (Where NOT to touch)
+
+To prevent breaking the Docusaurus architecture or merge conflicts, **you must abide by these strict boundaries:**
+
+1. **DO NOT modify `docusaurus.config.ts` or `sidebars.ts`.** The navigation is entirely auto-generated based on the `docs/` folder structure. You do not need to touch configuration files.
+2. **DO NOT create files in the `src/` directory.** The `src/` directory is reserved for core Docusaurus overrides (like the Homepage UI or custom CSS). Component templates do not belong there.
+3. **ONLY create files inside `docs/frontend`, `docs/backend`, or `docs/full-stack`.** 
+4. **DO NOT create files at the root level.**
+
+If your Pull Request modifies files outside the `docs/` pillars without explicit permission from a Lead Maintainer, it will be automatically rejected.
+
+---
+
 ## 🚦 Final Checklist
 
 Before you open a Pull Request, always ask yourself:

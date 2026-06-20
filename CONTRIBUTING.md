@@ -8,6 +8,17 @@ Welcome! This guide explains how our platform works and how you can add new arch
 - **Diagrams**: Native support for **Mermaid.js** diagrams inside code blocks.
 - **Interactive Code**: We use `@docusaurus/theme-live-codeblock` to run React code live in the browser.
 
+All contributions to this project should be made via Pull Requests.
+
+## ⛔ Strict Contribution Boundaries (Where NOT to touch)
+
+To prevent breaking the Docusaurus architecture, you **MUST** abide by these strict boundaries:
+1. **DO NOT modify `docusaurus.config.ts` or `sidebars.ts`.** The sidebar navigation is completely auto-generated based on the folders in the `docs/` directory.
+2. **DO NOT create or modify files in the `src/` directory.** The `src/` directory is exclusively for core Docusaurus UI overrides (like the Homepage). Component templates and blueprints do not belong there.
+3. **ONLY create files inside `docs/frontend`, `docs/backend`, or `docs/full-stack`.** 
+
+If your PR modifies files outside of these directories without explicit permission, it will be immediately rejected without review.
+
 ---
 
 ## 1. Local Setup
@@ -15,7 +26,7 @@ Welcome! This guide explains how our platform works and how you can add new arch
 To get the site running on your computer:
 
 ```bash
-# 1. Clone the repository
+# 1. Fork & clone the repository
 git clone https://github.com/software-blueprints-hq/software-blueprints.git
 cd software-blueprints
 
