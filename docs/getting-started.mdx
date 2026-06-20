@@ -72,8 +72,44 @@ graph TD;
 ```
 </pre>
 
-### Step 4: Adding Interactive UI Previews (MDX Tabs)
-If you are adding frontend code (like a React or Vue component), we require you to use the **Preview & Code Tabs** pattern.
+## 📑 Step 4: Grouping Multiple Variants (The 1, 2, 3 Method)
+When building UI components, you should put multiple variants of the same component (e.g., Solid Buttons, Outline Buttons) into the *same* file.
+
+To ensure Docusaurus automatically builds a beautiful "On this page" Table of Contents on the right side of the screen, you MUST use `##` (H2) headers with numbers for each variant. 
+
+For example, structure your file exactly like this:
+
+```mdx
+---
+sidebar_position: 1
+title: "Button Components"
+---
+
+# Button Components
+Brief description of the buttons...
+
+## 1. Solid Buttons (Standard)
+<Tabs>
+  {/* Tab Code Here */}
+</Tabs>
+
+## 2. Outline Buttons
+<Tabs>
+  {/* Tab Code Here */}
+</Tabs>
+
+## 3. Ghost / Text Buttons
+<Tabs>
+  {/* Tab Code Here */}
+</Tabs>
+```
+
+By using the `## 1. Name` format, your components will be perfectly organized and easy to navigate!
+
+---
+
+## 💻 Step 5: Adding Interactive UI Previews (MDX Tabs)
+For each variant under your `##` header, we require you to use the **Preview & Code Tabs** pattern.
 
 Import the Tabs component right below your frontmatter, and structure your code like this:
 
@@ -87,6 +123,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Hero Sections
+
+## 1. Dark Mode Hero
 
 <Tabs>
   <TabItem value="preview" label="Preview" default>
